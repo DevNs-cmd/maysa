@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | The Masaya Jwellery & Co.</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="padding-top: 80px;">
+    <nav class="navbar" style="background-color: var(--color-cream);">
+        <a href="index.html" class="nav-brand">MASAYA®</a>
+        <div class="nav-links">
+            <a href="shop.html">SHOP</a>
+            <a href="shop.html">STORY</a>
+            <a href="shop.html">LEARN</a>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-bars mobile-menu-btn"></i>
+            <i class="fas fa-search desktop-only-icon"></i>
+            <i class="fas fa-globe desktop-only-icon" style="font-size: 0.8rem;"> EN</i>
+            <i class="fas fa-user desktop-only-icon"></i>
+            <a href="cart.html" style="color: inherit; position: relative;">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="page-transition">
+        <div class="page-transition-logo">MASAYA</div>
+    </div>
+
+    <main class="container section-padding">
+        <h1 class="section-title reveal-up" style="font-size: 3rem; text-align: left; margin-bottom: 3rem;">Your Shopping Bag</h1>
+        
+        <div class="cart-layout">
+            <div id="cart-items-container" class="reveal-left">
+                <!-- Cart Items are injected here via JS -->
+            </div>
+            
+            <div class="reveal-right">
+                <div class="glass-panel" style="padding: 2rem; position: sticky; top: 100px;">
+                    <h2 style="font-family: var(--font-sans); color: var(--color-primary); margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Order Summary</h2>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; color: var(--color-text-muted);">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal" style="color: var(--color-primary);">$0</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; color: var(--color-text-muted);">
+                        <span>Estimated Shipping</span>
+                        <span style="color: var(--color-primary);">Complimentary</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; color: var(--color-text-muted);">
+                        <span>Taxes</span>
+                        <span style="color: var(--color-emerald-dark);">Calculated at checkout</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; font-size: 1.3rem;">
+                        <strong style="color: var(--color-primary);">Total</strong>
+                        <strong id="cart-summary-total" style="color: var(--color-secondary); font-family: var(--font-serif);">$0</strong>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%; border-radius: 8px; font-size: 1.1rem; padding: 1rem;" onclick="alert('Proceeding to checkout via Masaya Secure Gateway')">Secure Checkout</button>
+                    
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <i class="fas fa-lock" style="color: var(--color-text-muted); margin-bottom: 0.5rem; display: block;"></i>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Transactions are secure and encrypted. Need help? Call our concierge at 1-800-MASAYA.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="margin-top: 4rem;">
+        <div class="container footer-bottom">
+            &copy; 2026 The Masaya Jwellery & Co. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

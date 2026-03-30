@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | The Masaya Jwellery & Co.</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .product-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 6rem;
+        }
+        
+        .img-zoom-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: zoom-in;
+            height: 600px;
+            background: var(--color-white);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-zoom-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.1s;
+        }
+
+        .product-details-content {
+            padding: 2rem 0;
+        }
+
+        .product-brand {
+            color: var(--color-gold);
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .pd-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .pd-price {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .pd-desc {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .specs-list {
+            margin-bottom: 3rem;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 2rem 0;
+        }
+
+        .specs-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-family: var(--font-sans);
+        }
+
+        .specs-list li span:first-child {
+            color: var(--color-text-muted);
+        }
+
+        .specs-list li span:last-child {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 900px) {
+            .product-detail-layout {
+                grid-template-columns: 1fr;
+            }
+            .img-zoom-wrapper {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" style="background-color: var(--color-cream);">
+        <a href="index.html" class="nav-brand">MASAYA®</a>
+        <div class="nav-links">
+            <a href="shop.html">SHOP</a>
+            <a href="shop.html">STORY</a>
+            <a href="shop.html">LEARN</a>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-bars mobile-menu-btn"></i>
+            <i class="fas fa-search desktop-only-icon"></i>
+            <i class="fas fa-globe desktop-only-icon" style="font-size: 0.8rem;"> EN</i>
+            <i class="fas fa-user desktop-only-icon"></i>
+            <a href="cart.html" style="color: inherit; position: relative;">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="page-transition">
+        <div class="page-transition-logo">MASAYA</div>
+    </div>
+
+    <main class="container section-padding" id="product-detail-container">
+        <div class="product-detail-layout">
+            
+            <div class="reveal-left">
+                <div class="img-zoom-wrapper" id="img-zoom-wrapper">
+                    <!-- Image injected via JS -->
+                    <img id="main-image" src="" alt="Product Image">
+                </div>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+                    <i class="fas fa-search-plus" style="color: var(--color-gold);"></i> 
+                    <span style="color: var(--color-text-muted); font-size: 0.9rem;">Hover to zoom image</span>
+                </div>
+            </div>
+
+            <div class="product-details-content reveal-right">
+                <div id="product-brand" class="product-brand">MASAYA</div>
+                <h1 id="product-title" class="pd-title">Loading...</h1>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <span id="product-reviews" style="color: var(--color-gold); font-size: 1.1rem; letter-spacing: 2px;">★ 5.0 (0 reviews)</span>
+                </div>
+
+                <div id="product-price" class="pd-price">$0</div>
+                
+                <p id="product-desc" class="pd-desc">Loading description...</p>
+                
+                <ul class="specs-list">
+                    <li><span>Material</span> <span>18k Solid Gold / Platinum</span></li>
+                    <li><span>Condition</span> <span>Brand New</span></li>
+                    <li><span>Warranty</span> <span>Lifetime Manufacturer Warranty</span></li>
+                    <li><span>Authenticity</span> <span>Certified Original</span></li>
+                </ul>
+
+                <button id="pd-add-to-cart" class="btn-primary add-to-cart-btn" style="width: 100%; border-radius: 8px; font-size: 1.2rem; padding: 1.2rem;">Add to Cart</button>
+                
+                <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: space-around; padding: 2rem; background: var(--color-white); border-radius: 12px; border: 1px solid var(--glass-border);">
+                    <div style="text-align: center; color: var(--color-text-muted);">
+                        <i class="fas fa-shipping-fast" style="color: var(--color-gold); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <div style="font-size: 0.8rem;">Complimentary Shipping</div>
+                    </div>
+                    <div style="text-align: center; color: var(--color-text-muted);">
+                        <i class="fas fa-box-open" style="color: var(--color-gold); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <div style="font-size: 0.8rem;">Free Returns</div>
+                    </div>
+                    <div style="text-align: center; color: var(--color-text-muted);">
+                        <i class="fas fa-shield-alt" style="color: var(--color-gold); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <div style="font-size: 0.8rem;">Secure Checkout</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="margin-top: 4rem;">
+        <div class="container footer-bottom">
+            &copy; 2026 The Masaya Jwellery & Co. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

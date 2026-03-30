@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | The Masaya Jwellery & Co.</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        .auth-page {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .auth-image {
+            flex: 1;
+            background: linear-gradient(to right, rgba(141, 145, 115, 0.4), var(--color-primary)),
+                        url('https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=1500') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 4rem;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .auth-form-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            background: var(--color-cream);
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        @media (max-width: 900px) {
+            .auth-page {
+                flex-direction: column;
+            }
+            .auth-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Using auth.js modal is skipped visually by hiding it -->
+    <style>#auth-modal { display: none !important; }</style>
+
+    <div class="page-transition">
+        <div class="page-transition-logo">MASAYA</div>
+    </div>
+
+    <div class="auth-page">
+        <!-- Close button to go back -->
+        <a href="index.html" class="icon-btn" style="position: absolute; top: 2rem; left: 2rem; z-index: 10; color: var(--color-primary); font-size: 1.5rem;">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <div class="auth-image reveal-left">
+            <h1 style="font-size: 3.5rem; margin-bottom: 2rem; color: var(--color-cream); font-family: var(--font-serif); letter-spacing: 4px;">MASAYA</h1>
+            <p style="font-size: 1.2rem; max-width: 400px; color: var(--color-cream); opacity: 0.9;">Join our exclusive members club to unlock personalized recommendations, early access to new collections, and complimentary servicing.</p>
+        </div>
+
+        <div class="auth-form-container reveal-right">
+            <div class="auth-box glass-panel" style="padding: 3rem; background: var(--color-white); border: 1px solid rgba(0,0,0,0.05);">
+                <!-- Login Form -->
+                <div id="page-login-form">
+                    <h2 style="text-align: center; margin-bottom: 2rem; color: var(--color-primary); font-family: var(--font-serif);">Welcome Back</h2>
+                    <form onsubmit="return false">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--color-primary); font-size: 0.9rem;">Email Address</label>
+                            <input type="email" id="p-login-email" class="form-input" required style="width: 100%; padding: 0.8rem; background: var(--color-cream); border: 1px solid rgba(0,0,0,0.1); color: var(--color-text); border-radius: 0; outline: none;">
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">Password</label>
+                            <input type="password" id="p-login-password" class="form-input" required style="width: 100%; padding: 0.8rem; background: rgba(248, 245, 240, 0.05); border: 1px solid var(--glass-border); color: var(--color-white); border-radius: 8px; outline: none;">
+                        </div>
+                        <button type="button" id="p-submit-login" class="btn-primary" style="width: 100%; margin-bottom: 1rem;">Sign In</button>
+                        <p style="text-align: center; color: var(--color-text-muted); font-size: 0.9rem;">
+                            New to Masaya? <a href="#" id="p-toggle-signup" style="color: var(--color-gold);">Create Account</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="page-signup-form" style="display: none;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Create Account</h2>
+                    <form onsubmit="return false">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">Full Name</label>
+                            <input type="text" id="p-signup-name" class="form-input" required style="width: 100%; padding: 0.8rem; background: rgba(248, 245, 240, 0.05); border: 1px solid var(--glass-border); color: var(--color-white); border-radius: 8px; outline: none;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">Email</label>
+                            <input type="email" id="p-signup-email" class="form-input" required style="width: 100%; padding: 0.8rem; background: rgba(248, 245, 240, 0.05); border: 1px solid var(--glass-border); color: var(--color-white); border-radius: 8px; outline: none;">
+                        </div>
+                        <div style="margin-bottom: 2rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--color-gold); font-size: 0.9rem;">Password</label>
+                            <input type="password" id="p-signup-password" class="form-input" required style="width: 100%; padding: 0.8rem; background: rgba(248, 245, 240, 0.05); border: 1px solid var(--glass-border); color: var(--color-white); border-radius: 8px; outline: none;">
+                        </div>
+                        <button type="button" id="p-submit-signup" class="btn-primary" style="width: 100%; margin-bottom: 1rem;">Register</button>
+                        <p style="text-align: center; color: var(--color-text-muted); font-size: 0.9rem;">
+                            Already have an account? <a href="#" id="p-toggle-login" style="color: var(--color-gold);">Sign In</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimal JS to hook into the existing localStorage auth -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('p-toggle-signup').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('page-login-form').style.display = 'none';
+                document.getElementById('page-signup-form').style.display = 'block';
+            });
+            
+            document.getElementById('p-toggle-login').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('page-signup-form').style.display = 'none';
+                document.getElementById('page-login-form').style.display = 'block';
+            });
+
+            document.getElementById('p-submit-login').addEventListener('click', () => {
+                const email = document.getElementById('p-login-email').value;
+                if(email) {
+                    localStorage.setItem('masaya_user', JSON.stringify({ name: email.split('@')[0] }));
+                    window.location.href = 'index.html';
+                }
+            });
+
+            document.getElementById('p-submit-signup').addEventListener('click', () => {
+                const name = document.getElementById('p-signup-name').value;
+                if(name) {
+                    localStorage.setItem('masaya_user', JSON.stringify({ name }));
+                    window.location.href = 'index.html';
+                }
+            });
+
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.style.borderColor = 'var(--color-gold)';
+                    input.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.2)';
+                });
+                input.addEventListener('blur', () => {
+                    input.style.borderColor = 'var(--glass-border)';
+                    input.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
