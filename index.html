@@ -33,9 +33,9 @@
         </div>
         <div class="nav-icons">
             <i class="fas fa-bars mobile-menu-btn"></i>
-            <i class="fas fa-search desktop-only-icon"></i>
+            <i class="fas fa-search desktop-only-icon" id="search-trigger" style="cursor: pointer;"></i>
             <i class="fas fa-globe desktop-only-icon" style="font-size: 0.8rem;"> EN</i>
-            <i class="fas fa-user desktop-only-icon"></i>
+            <i class="fas fa-user desktop-only-icon" onclick="location.href='login.html'" style="cursor: pointer;"></i>
             <a href="cart.html" style="color: inherit; position: relative;">
                 <i class="fas fa-shopping-bag"></i>
                 <span class="cart-count">0</span>
@@ -269,6 +269,19 @@
             <a href="shop.html">BAGS</a>
             <a href="shop.html">CURATED SETS</a>
             <a href="shop.html">GIFTING</a>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-content">
+            <i class="fas fa-times search-close" id="search-close"></i>
+            <h2 style="color: var(--color-cream); margin-bottom: 2rem; font-size: 1.5rem;">SEARCH COLLECTIONS</h2>
+            <div class="search-input-wrapper">
+                <input type="text" id="search-input" placeholder="What are you looking for?" autocomplete="off">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="search-results" class="search-results"></div>
         </div>
     </div>
 

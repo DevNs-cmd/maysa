@@ -17,25 +17,78 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   };
 
-  // Home Page Logic
-  const featuredGrid = document.getElementById('featured-grid');
-  if (featuredGrid) {
-    // Women's Items (Necklaces, rings, Bracelets, Earrings)
-    const featured = products.filter(p => ['necklaces', 'rings', 'bracelets', 'earrings'].includes(p.category)).slice(0, 4);
-    featuredGrid.innerHTML = featured.map(createProductCard).join('');
+  // Search System
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  const toggleSearch = () => searchOverlay.classList.toggle('active');
+  
+  if (searchTrigger) searchTrigger.onclick = toggleSearch;
+  if (searchClose) searchClose.onclick = toggleSearch;
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      if (q.length < 2) {
+        searchResults.innerHTML = '';
+        return;
+      }
+      const matches = products.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q)
+      ).slice(0, 6);
+
+      searchResults.innerHTML = matches.map(p => `
+        <div class="search-result-item" onclick="location.href='product.html?id=${p.id}'">
+          <img src="${p.image}" alt="${p.name}">
+          <div>
+            <h4>${p.name}</h4>
+            <p>${p.category.toUpperCase()} • ${formatPrice(p.price)}</p>
+          </div>
+        </div>
+      `).join('');
+    });
   }
 
+  // Optimized Home Page Grid Logic
+  const featuredGrid = document.getElementById('featured-grid');
+  const categoryTabs = document.querySelectorAll('.category-tab');
+
+  const renderFeatured = (cat = 'bracelets') => {
+    if (!featuredGrid) return;
+    const filtered = products.filter(p => 
+      cat === 'all' ? true : p.category === cat.toLowerCase()
+    ).slice(0, 4);
+    
+    featuredGrid.innerHTML = filtered.map(createProductCard).join('');
+    gsap.from(featuredGrid.children, { y: 20, opacity: 0, duration: 0.4, stagger: 0.1 });
+  };
+
+  if (categoryTabs.length > 0) {
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        renderFeatured(tab.textContent.trim());
+      });
+    });
+    // Initial Render
+    renderFeatured('bracelets');
+  }
+
+  // Standard Grids
   const menGrid = document.getElementById('men-grid');
   if (menGrid) {
-    // Men's Items (Watches)
-    const menItems = products.filter(p => p.category === 'watches').slice(0, 4);
+    const menItems = products.filter(p => p.category === 'watches').slice(0, 8);
     menGrid.innerHTML = menItems.map(createProductCard).join('');
   }
 
   const mangalGrid = document.getElementById('mangal-grid');
   if (mangalGrid) {
-    // Mangalsutra Exclusives
-    const mangalItems = products.filter(p => p.category === 'mangalsutra' || p.category === 'necklaces').slice(0, 4);
+    const mangalItems = products.filter(p => p.category === 'mangalsutra' || p.category === 'necklaces').slice(0, 8);
     mangalGrid.innerHTML = mangalItems.map(createProductCard).join('');
   }
 

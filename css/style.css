@@ -578,16 +578,16 @@ footer {
 ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
 
 /* Mobile Menu Overlay iOS Glassmorphism */
-.mobile-nav-overlay {
+.mobile-nav-overlay, .search-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.4); /* Dim background */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -596,7 +596,7 @@ footer {
   transition: all 0.4s ease;
 }
 
-.mobile-nav-overlay.active {
+.mobile-nav-overlay.active, .search-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -653,10 +653,84 @@ footer {
   border-radius: 8px;
 }
 
-/* Base Hamburger Hide */
-.mobile-menu-btn {
-  display: none !important;
+.search-content {
+  width: 90%;
+  max-width: 600px;
+  background: var(--color-primary);
+  padding: 3rem 2rem;
+  border-radius: 30px;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-cream);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
+
+.search-overlay.active .search-content {
+  transform: scale(1);
+}
+
+.search-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.search-input-wrapper i {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.search-results {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding-right: 10px;
+}
+
+.search-result-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.8rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: left;
+}
+
+.search-result-item:hover { background: rgba(255,255,255,0.1); }
+.search-result-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+.search-result-item h4 { font-size: 0.95rem; margin-bottom: 2px; }
+.search-result-item p { font-size: 0.85rem; opacity: 0.7; }
 
 /* iOS Glass Mobile Responsive Refinements */
 @media (max-width: 1024px) {
