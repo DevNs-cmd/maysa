@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASAYA | Printemps Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SzlrxWriC3Z8gy6Y+DQ8Dw6xGXN5mGk5r5p3G6bci6E3Cw5t8uOjZ0fjQX+0XWvZB2D3r9E0Yv7N2V9c3V8F8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/printemps.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <span>3-year warranty</span>
+    <span>·</span>
+    <span>Free shipping over ₹15,500</span>
+    <span>·</span>
+    <span>Worldwide shipping</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">MASAYA</div>
+    <nav class="main-nav">
+      <a href="#">NEW IN</a>
+      <a href="#">JEWELRY</a>
+      <a href="#">COLLECTIONS</a>
+      <a href="#">GIFTS</a>
+      <a href="#">LA MAISON</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+      <button class="icon-btn" aria-label="Account"><i class="fas fa-user"></i></button>
+      <button class="icon-btn cart-btn" aria-label="Bag">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="icon-btn menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">COLLECTION</p>
+      <h1># Printemps</h1>
+      <p class="hero-copy">A pave collection inspired by spring light in Monaco, reinterpreted through MASAYA's lens.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#products">View the lineup</a>
+        <a class="btn ghost" href="#">Find a boutique</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toolbar -->
+  <div class="toolbar container">
+    <div class="filter-left">
+      <button id="filter-toggle" class="btn ghost icon-left"><i class="fas fa-filter"></i>Filters</button>
+      <span class="result-count" id="result-count">0 items</span>
+    </div>
+    <div class="sort-right">
+      <label for="sort-select">Sort</label>
+      <select id="sort-select">
+        <option value="featured">Featured</option>
+        <option value="new">Newest</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <main class="container layout">
+    <!-- Filters -->
+    <aside class="filters" id="filters">
+      <div class="filters__header">
+        <h3>Filters</h3>
+        <button class="icon-btn close-filters" id="close-filters"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group__title">Category</div>
+        <div class="pill-group" data-filter="category">
+          <label><input type="checkbox" value="rings">Rings</label>
+          <label><input type="checkbox" value="earrings">Earrings</label>
+          <label><input type="checkbox" value="necklaces">Necklaces</label>
+          <label><input type="checkbox" value="bracelets">Bracelets</label>
+          <label><input type="checkbox" value="accessories">Accessories</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group__title">Metal color</div>
+        <div class="pill-group" data-filter="color">
+          <label><input type="checkbox" value="white">White</label>
+          <label><input type="checkbox" value="yellow">Yellow</label>
+          <label><input type="checkbox" value="rose">Rose</label>
+          <label><input type="checkbox" value="lavender">Lavender</label>
+          <label><input type="checkbox" value="blue">Blue</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group__title">Stone</div>
+        <div class="pill-group" data-filter="stone">
+          <label><input type="checkbox" value="white">White</label>
+          <label><input type="checkbox" value="blue">Blue</label>
+          <label><input type="checkbox" value="purple">Purple</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group__title">Price band</div>
+        <div class="pill-group" data-filter="price">
+          <label><input type="checkbox" value="low">Up to ₹20,000</label>
+          <label><input type="checkbox" value="mid">₹20,000 - ₹40,000</label>
+          <label><input type="checkbox" value="high">₹40,000 and above</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group__title">Design line</div>
+        <div class="pill-group" data-filter="design">
+          <label><input type="checkbox" value="torsade">Torsade</label>
+          <label><input type="checkbox" value="lumiere">Lumiere</label>
+          <label><input type="checkbox" value="geometric">Geometric</label>
+          <label><input type="checkbox" value="artdeco">Art Deco</label>
+        </div>
+      </div>
+
+      <div class="filters__footer">
+        <button class="btn secondary" id="clear-filters">Clear</button>
+        <button class="btn primary" id="apply-filters">Show results</button>
+      </div>
+    </aside>
+
+    <!-- Product grid -->
+    <section class="product-area" id="products">
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <h4>MASAYA PRINTEMPS</h4>
+        <p>An exclusive line that captures Monaco’s spring glow. Soft curves, lilac highlights, and signature pavé detailing define this capsule.</p>
+      </div>
+      <div>
+        <h4>Client care</h4>
+        <p>3-year warranty · 30-day returns · Global delivery.</p>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <div class="socials">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-tiktok"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MASAYA. All rights reserved.</div>
+  </footer>
+
+  <script src="js/printemps.js"></script>
+</body>
+</html>

@@ -1,160 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's Mangalsutra Collection | The Masaya Jwellery & Co.</title>
-    
+    <title>The Collection — MASAYA® Fine Jewelry</title>
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    
-    <!-- Top Bar -->
+
+    <!-- Ambient Layer -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Scroll & Page Systems -->
+    <div id="scroll-indicator"></div>
+    <div class="page-transition-overlay"></div>
+    <div class="custom-cursor"></div>
+
     <!-- Top Announcement Bar -->
     <div class="marquee-promo">
         <div class="marquee-promo-inner">
-            <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE</span>
-            <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE</span>
+            <span>The Fine Jewelry Collection <span class="sep">◆</span> Free Global Shipping <span class="sep">◆</span> 3 Year Warranty <span class="sep">◆</span> The Fine Jewelry Collection <span class="sep">◆</span> Free Global Shipping <span class="sep">◆</span> 3 Year Warranty</span>
+            <span>The Fine Jewelry Collection <span class="sep">◆</span> Free Global Shipping <span class="sep">◆</span> 3 Year Warranty <span class="sep">◆</span> The Fine Jewelry Collection <span class="sep">◆</span> Free Global Shipping <span class="sep">◆</span> 3 Year Warranty</span>
         </div>
     </div>
 
-    <!-- Navbar with Dropdown Hover -->
     <!-- Main Navbar -->
-    <nav class="navbar" style="background-color: var(--color-cream);">
-        <a href="index.html" class="nav-brand">MASAYA®</a>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">MASAYA<sup>®</sup></a>
         <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="shop.html">SHOP</a>
-            <a href="shop.html">STORY</a>
-            <a href="shop.html">LEARN</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="shop.html">Collections</a>
+            <a href="shop.html">Story</a>
         </div>
         <div class="nav-icons">
-            <i class="fas fa-bars mobile-menu-btn"></i>
-            <i class="fas fa-search desktop-only-icon"></i>
-            <i class="fas fa-globe desktop-only-icon" style="font-size: 0.8rem;"> EN</i>
-            <i class="fas fa-user desktop-only-icon"></i>
-            <a href="cart.html" style="color: inherit; position: relative;">
+            <div class="nav-icon"><i class="fas fa-search"></i></div>
+            <div class="nav-icon"><i class="fas fa-user"></i></div>
+            <div class="cart-icon-wrapper nav-icon" id="cart-trigger">
                 <i class="fas fa-shopping-bag"></i>
-                <span class="cart-count">0</span>
-            </a>
+                <div class="cart-pulse-dot" style="display: none;"></div>
+            </div>
         </div>
     </nav>
-    
-    <div class="page-transition">
-        <div class="page-transition-logo">MASAYA</div>
-    </div>
 
-    <!-- Shop Hero Image -->
-    <div class="shop-banner reveal-up">
-        <div class="shop-banner-content container">
-            <!-- empty for minimal look like screenshot 2 -->
-        </div>
-    </div>
+    <main>
+        <!-- Shop Banner -->
+        <section class="impact-section" style="padding: 100px 0 60px;">
+             <div class="container" style="text-align: center;">
+                 <div class="breadcrumbs" style="color: var(--color-gold); font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 20px;">
+                     HOME / COLLECTIONS / ALL JEWELRY
+                 </div>
+                 <h1 class="reveal-title active" style="font-size: 4rem; margin-bottom: 10px;">The Collection</h1>
+                 <p style="max-width: 600px; margin: 0 auto; opacity: 0.8; font-size: 0.95rem;">Tradition, reimagined for the modern spirit. Explore our curated selection of fine jewelry crafted in 18k gold and ethically sourced diamonds.</p>
+             </div>
+        </section>
 
-    <!-- Header Section (Breadcrumbs, Title, Subtitle) -->
-    <main class="container" style="padding-top: 2rem;">
-        
-        <div class="breadcrumbs">
-            <i class="fas fa-home"></i> <span>/</span> <a href="#">Collections</a> <span>/</span> <span>Women's Mangalsutra Collection</span>
-        </div>
+        <!-- Filters Section -->
+        <section class="container" style="padding: 40px 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 15px; overflow-x: auto;">
+                <button class="category-tab active">All</button>
+                <button class="category-tab">Rings</button>
+                <button class="category-tab">Necklaces</button>
+                <button class="category-tab">Earrings</button>
+                <button class="category-tab">Bracelets</button>
+            </div>
+            <div class="nav-icon" style="font-size: 0.8rem; letter-spacing: 2px;">
+                FILTER & SORT <i class="fas fa-sliders-h" style="margin-left: 10px;"></i>
+            </div>
+        </section>
 
-        <h1 style="font-size: 2.5rem; font-family: var(--font-serif); margin-bottom: 1rem; color: var(--color-primary);">
-            Women's Mangalsutra Collection
-        </h1>
-        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2rem;">
-            Tradition, reimagined for her. From sleek mangalsutra necklaces that pair effortlessly with denim... <a href="#" style="text-decoration: underline; color: var(--color-primary);">Read more</a>
-        </p>
+        <!-- Product Grid -->
+        <section class="section-padding container">
+            <div class="grid-4" id="shop-grid">
+                <!-- Products injected via main.js -->
+            </div>
+        </section>
     </main>
 
-    <!-- Marquee scrolling directly under title -->
-    <div class="marquee-promo reveal-up">
-        <div class="marquee-promo-inner">
-            <span style="margin-right: 50px;">EXTRA 10% OFF ON FIRST ORDER | USE CODE: <strong>NEW10</strong></span>
-            <span style="font-size: 12px; margin-right: 50px;">&#9711;</span>
-            <span style="margin-right: 50px;">BUY 1 GET 1 FREE</span>
-            <span style="font-size: 12px; margin-right: 50px;">&#9711;</span>
-            <span style="margin-right: 50px;">EXTRA 10% OFF ON FIRST ORDER | USE CODE: <strong>NEW10</strong></span>
-            <span style="font-size: 12px; margin-right: 50px;">&#9711;</span>
-            <span style="margin-right: 50px;">BUY 1 GET 1 FREE</span>
-            <span style="font-size: 12px; margin-right: 50px;">&#9711;</span>
-        </div>
-    </div>
-
-    <!-- Filters and Sort Row -->
-    <section class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 1rem;">
-        <div style="display: flex; align-items: center; gap: 2rem;">
-            <button class="btn-outline" style="padding: 0.6rem 2rem; border-color: #ddd; color: var(--color-text); text-transform: none; display: flex; align-items: center; gap: 10px; font-weight: 500;">
-                <i class="fas fa-sliders-h"></i> SHOW FILTERS
-            </button>
-            <span style="color: var(--color-text-muted); font-size: 0.95rem;">Women's Mangalsutra Collection - <span id="product-count">12</span> products</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;">
-            <span>Sort by:</span>
-            <select id="sort-options" style="padding: 0.6rem 2rem; border: 1px solid #ddd; border-radius: 30px; outline: none; background: white; cursor: pointer; font-family: var(--font-sans); appearance: none; -webkit-appearance: none;">
-                <option value="popular">Best selling</option>
-                <option value="price-low">Price, low to high</option>
-                <option value="price-high">Price, high to low</option>
-            </select>
-        </div>
-    </section>
-
-    <!-- Product Grid -->
-    <section class="container" style="padding-bottom: 6rem;">
-        <div class="grid-4 product-grid" id="shop-grid">
-            <!-- Injected via main.js -->
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content" style="grid-template-columns: 2fr 1fr 1fr 1fr;">
-            <div class="footer-col" style="grid-column: span 1;">
-                <div class="footer-brand" style="color: var(--color-gold);">MASAYA®</div>
-                <p class="footer-desc">Crafting timeless elegance and modern luxury through exceptional watches and exquisite jewelry.</p>
+    <!-- Footer Branded -->
+    <footer class="footer-branded">
+        <div class="container">
+            <div class="footer-top-reveal" style="overflow: hidden;">
+                <h2 class="footer-massive-brand">MASAYA</h2>
+                <p class="footer-tagline">CRAFTED WITH INTENTION · WORN WITH GRACE</p>
             </div>
-            <div class="footer-col">
-                <h4 style="color: var(--color-gold);">Collections</h4>
-                <ul>
-                    <li><a href="shop.html">Men's</a></li>
-                    <li><a href="shop.html">Women's</a></li>
-                    <li><a href="shop.html">Jewelry</a></li>
-                </ul>
+            
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>The Brand</h4>
+                    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 20px;">Dedicated to the art of fine jewelry since 1994, Masaya blends heritage craftsmanship with contemporary Indian aesthetics.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="shop.html">Solitaires</a></li>
+                        <li><a href="shop.html">Handcrafted Gold</a></li>
+                        <li><a href="shop.html">The Story Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Client Care</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Bespoke Inquiry</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Refined</h4>
+                    <div class="newsletter-input-wrapper">
+                        <input type="email" class="newsletter-input" placeholder="Join our circle...">
+                        <button class="newsletter-btn">Join</button>
+                    </div>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4 style="color: var(--color-gold);">Client Care</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Servicing</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
+            
+            <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 0.65rem; opacity: 0.5;">
+                &copy; 2026 MASAYA® FINE JEWELRY. ALL RIGHTS RESERVED.
             </div>
-        </div>
-        <div class="container footer-bottom" style="text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 2rem; margin-top: 2rem;">
-            &copy; 2026 The Masaya Jwellery & Co. All rights reserved.
         </div>
     </footer>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay">
-        <div class="mobile-nav-content">
-            <i class="fas fa-times mobile-nav-close"></i>
-            <a href="shop.html">MEN</a>
-            <a href="shop.html">WOMEN</a>
-            <a href="shop.html">MANGALSUTRA</a>
-            <a href="shop.html">BAGS</a>
-            <a href="shop.html">CURATED SETS</a>
-            <a href="shop.html">GIFTING</a>
+    <!-- Cart Drawer -->
+    <div id="cart-drawer-overlay"></div>
+    <div id="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Selection</h2>
+            <i class="fas fa-times" id="close-cart"></i>
+        </div>
+        <div class="cart-body">
+             <p>Your selection is currently empty.</p>
         </div>
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/cart.js"></script>
+    <!-- Toast System -->
+    <div id="toast-system"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/animations.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

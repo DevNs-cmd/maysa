@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASAYA Bracelets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/emerald.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>MASAYA</span><span>|</span><span>Bracelets</span><span>|</span><span>Tennis & cuffs</span>
+      <span>MASAYA</span><span>|</span><span>Bracelets</span><span>|</span><span>Tennis & cuffs</span>
+    </div>
+  </div>
+  <header>
+    <div class="nav">
+      <div class="brand">MASAYA</div>
+      <div class="nav-links">
+        <a href="rings.html">Rings</a>
+        <a href="necklaces.html">Necklaces</a>
+        <a href="earrings.html">Earrings</a>
+        <a href="bracelets.html">Bracelets</a>
+        <a href="accessories.html">Accessories</a>
+      </div>
+      <div class="actions">
+        <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button class="icon-btn" aria-label="Account"><i class="fas fa-user"></i></button>
+        <div style="position: relative;">
+          <button class="icon-btn" id="cart-btn" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="cart-dot" id="cart-count">0</span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" style="min-height:360px;">
+    <div class="hero-content">
+      <p class="eyebrow">Category</p>
+      <h1>Bracelets</h1>
+      <p>Tennis lines, cuffs, ribbon chains — tuned for shimmer and comfort.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="shop-now">Shop bracelets</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container section-pad" id="catalog">
+    <div class="bar">
+      <div>
+        <h2 style="margin-bottom:6px;">All bracelets</h2>
+        <p style="color:var(--emerald-700);">Glassmorphic cards, INR pricing, cart-ready.</p>
+      </div>
+      <div class="controls">
+        <label for="sort">Sort:</label>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="new">Newest</option>
+        </select>
+        <label for="price-max">Max ₹</label>
+        <input type="range" id="price-max" min="800" max="52000" step="500" value="52000">
+        <span id="price-label">Up to ₹52,000</span>
+      </div>
+    </div>
+    <div class="filters" id="category-filters"></div>
+    <div class="grid" id="product-grid"></div>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><h4>Sizing help</h4><p>We guide you to the perfect length and clasp style.</p></div>
+      <div><h4>Assurance</h4><p>3-year warranty · 30-day returns · Secure checkout.</p></div>
+    </div>
+    <div style="text-align: center; margin-top: 14px;">© 2026 MASAYA.</div>
+  </footer>
+
+  <div class="toast" id="toast">Added to cart</div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <strong>Your bag</strong>
+      <button class="icon-btn" id="drawer-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="drawer-body">
+      <p style="color:var(--emerald-700);">Cart preview coming soon.</p>
+    </div>
+  </div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/store.js"></script>
+  <script>Store.init('bracelets');</script>
+</body>
+</html>

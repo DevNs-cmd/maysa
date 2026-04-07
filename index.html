@@ -1,298 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Masaya Jwellery & Co. | Luxury Defined</title>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASAYA | Emerald Storefront</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/emerald.css">
 </head>
-<body style="background-color: var(--color-cream); color: var(--color-emerald-dark);">
-    
-    <!-- Top Announcement Bar -->
-    <div class="marquee-promo">
-        <div class="marquee-promo-inner">
-            <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE</span>
-            <span>&nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE &nbsp;&nbsp;&bull;&nbsp;&nbsp; 10% OFF YOUR FIRST ORDER. REDEEM YOUR CODE</span>
-        </div>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>3-year warranty</span><span>|</span><span>Free shipping over ₹15,500</span><span>|</span><span>Worldwide delivery</span>
+      <span>3-year warranty</span><span>|</span><span>Free shipping over ₹15,500</span><span>|</span><span>Worldwide delivery</span>
     </div>
-
-    <!-- Main Navbar -->
-    <nav class="navbar" style="background-color: var(--color-cream);">
-        <a href="index.html" class="nav-brand">MASAYA®</a>
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="shop.html">SHOP</a>
-            <a href="shop.html">STORY</a>
-            <a href="shop.html">LEARN</a>
+  </div>
+  <header>
+    <div class="nav">
+      <div class="brand">MASAYA</div>
+      <div class="nav-links">
+        <a href="rings.html">Rings</a>
+        <a href="necklaces.html">Necklaces</a>
+        <a href="earrings.html">Earrings</a>
+        <a href="bracelets.html">Bracelets</a>
+        <a href="accessories.html">Accessories</a>
+      </div>
+      <button class="mobile-nav-btn" id="mobile-open" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+      <div class="actions">
+        <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button class="icon-btn" aria-label="Account"><i class="fas fa-user"></i></button>
+        <div style="position: relative;">
+          <button class="icon-btn" id="cart-btn" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="cart-dot" id="cart-count">0</span></button>
         </div>
-        <div class="nav-icons">
-            <i class="fas fa-bars mobile-menu-btn"></i>
-            <i class="fas fa-search desktop-only-icon" id="search-trigger" style="cursor: pointer;"></i>
-            <i class="fas fa-globe desktop-only-icon" style="font-size: 0.8rem;"> EN</i>
-            <i class="fas fa-user desktop-only-icon" onclick="location.href='login.html'" style="cursor: pointer;"></i>
-            <a href="cart.html" style="color: inherit; position: relative;">
-                <i class="fas fa-shopping-bag"></i>
-                <span class="cart-count">0</span>
-            </a>
-        </div>
-    </nav>
-
-    <main>
-        <!-- Hero Slider Section -->
-        <section class="hero-slider" style="width: 100%; position: relative;">
-            <div class="swiper mySwiper" style="width: 100%; height: 75vh;">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide" style="position: relative;">
-                        <!-- Open Source Watch Image -->
-                        <img src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=2000" style="width: 100%; height: 100%; object-fit: cover;" alt="Luxury Watch">
-                        <div style="position: absolute; inset: 0; background: rgba(18, 53, 48, 0.3);"></div>
-                        <div style="position: absolute; top: 50%; left: 50%; text-align: center; transform: translate(-50%, -50%); width: 80%;">
-                            <h2 style="font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-family: var(--font-serif); color: var(--color-cream); text-transform: uppercase; letter-spacing: 4px;">Indulge In<br>Everyday Beauty.</h2>
-                            <p style="font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-cream); opacity: 0.9;">Because you deserve the world.</p>
-                            <a href="shop.html" class="btn-primary">Shop Jewelry</a>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide" style="position: relative;">
-                        <!-- Diamond Necklace / Combo -->
-                        <img src="https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=2000" style="width: 100%; height: 100%; object-fit: cover;" alt="Combo Set">
-                        <div style="position: absolute; inset: 0; background: rgba(248, 245, 240, 0.3);"></div>
-                        <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px;">
-                            <h2 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-family: var(--font-serif); color: var(--color-emerald-dark);">Curated<br>Combo Sets</h2>
-                            <p style="font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-emerald-light);">Specially Curated Just For You</p>
-                            <a href="shop.html" class="btn-primary" style="background-color: var(--color-emerald-dark); color: var(--color-gold); padding: 12px 35px; border-radius: 30px; border: none;">Shop Now <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
-                        </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide" style="position: relative;">
-                        <!-- Mangalsutra / Heritage -->
-                        <img src="https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=2000" style="width: 100%; height: 100%; object-fit: cover; object-position: center bottom;" alt="Heritage Collection">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 53, 48, 0.7), transparent);"></div>
-                        <div style="position: absolute; bottom: 15%; left: 50%; text-align: center; transform: translateX(-50%); width: 100%;">
-                            <h2 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-family: var(--font-serif); color: var(--color-gold);">Heritage Remastered</h2>
-                            <p style="font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-cream);">The Modern Mangalsutra Details</p>
-                            <a href="shop.html" class="btn-primary" style="background-color: var(--color-gold); color: var(--color-emerald-dark); padding: 12px 35px; border-radius: 30px; border: none;">Discover <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
-                        </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide" style="position: relative;">
-                        <!-- Diamond Rings / Engagement -->
-                        <img src="https://images.pexels.com/photos/1232931/pexels-photo-1232931.jpeg?auto=compress&cs=tinysrgb&w=2000" style="width: 100%; height: 100%; object-fit: cover;" alt="Diamond Rings">
-                        <div style="position: absolute; inset: 0; background: rgba(248, 245, 240, 0.1);"></div>
-                        <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px;">
-                            <h2 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-family: var(--font-serif); color: var(--color-emerald-dark);">Forever<br>Starts Here</h2>
-                            <p style="font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-emerald-dark);">Exclusive Solitaires & Bands</p>
-                            <a href="shop.html" class="btn-primary" style="background-color: transparent; border: 1px solid var(--color-emerald-dark); color: var(--color-emerald-dark); padding: 12px 35px; border-radius: 30px;">View Rings <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
-                        </div>
-                    </div>
-                    <!-- Slide 5 -->
-                    <div class="swiper-slide" style="position: relative;">
-                        <!-- Classy Bracelets -->
-                        <img src="https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=2000" style="width: 100%; height: 100%; object-fit: cover;" alt="Gold Bracelets">
-                        <div style="position: absolute; inset: 0; background: rgba(18, 53, 48, 0.4);"></div>
-                        <div style="position: absolute; top: 50%; right: 10%; text-align: right; transform: translateY(-50%); max-width: 500px;">
-                            <h2 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-family: var(--font-serif); color: var(--color-cream);">Subtle<br>Radiance</h2>
-                            <p style="font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-gold);">18k Solid Gold Chains</p>
-                            <a href="shop.html" class="btn-primary" style="background-color: var(--color-cream); color: var(--color-emerald-dark); border: none; padding: 12px 35px; border-radius: 30px;">Shop Chains <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Pagination & Navigation -->
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next" style="color: var(--color-emerald-dark);"></div>
-                <div class="swiper-button-prev" style="color: var(--color-emerald-dark);"></div>
-            </div>
-        </section>
-
-        <!-- Category Grid Section -->
-        <section class="section-padding container">
-            <div class="category-grid">
-                <div class="category-block" onclick="window.location.href='shop.html'">
-                    <img src="https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg?auto=compress&cs=tinysrgb&w=800" alt="For Her">
-                    <h3>FOR HER <i class="fas fa-arrow-right"></i></h3>
-                </div>
-                <div class="category-block" onclick="window.location.href='shop.html'">
-                    <img src="https://images.pexels.com/photos/280250/pexels-photo-280250.jpeg?auto=compress&cs=tinysrgb&w=800" alt="For Him">
-                    <h3>FOR HIM <i class="fas fa-arrow-right"></i></h3>
-                </div>
-                <div class="category-block" onclick="window.location.href='shop.html'">
-                    <img src="https://images.pexels.com/photos/3661266/pexels-photo-3661266.jpeg?auto=compress&cs=tinysrgb&w=800" alt="For Kids">
-                    <h3>FOR KIDS <i class="fas fa-arrow-right"></i></h3>
-                </div>
-                <div class="category-block" onclick="window.location.href='shop.html'">
-                    <img src="https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Exclusive">
-                    <h3>EXCLUSIVE <i class="fas fa-arrow-right"></i></h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- Impact Section (Reference Image) -->
-        <section class="impact-section">
-            <div class="container impact-grid">
-                <div class="impact-image">
-                    <img src="https://images.pexels.com/photos/1166473/pexels-photo-1166473.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Portrait">
-                </div>
-                <div class="impact-content">
-                    <h2>Making a positive impact on people and the planet.</h2>
-                    <p>What's our secret? A conscious gratitude for all that we have. We appreciate every little thing, intentionally and daily, knowing that by instilling mindfulness and joy in ourselves, we become the catalysts for a better world.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Product Section Heading -->
-        <section class="section-padding container" style="text-align: center;">
-            <h2 style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 2px;">Shop a special something for yourself</h2>
-        </section>
-
-        <style>
-            @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-        </style>
-
-        <!-- New In Section: Women's -->
-        <section class="section-padding container">
-            <h2 style="font-size: 2.5rem; font-family: var(--font-serif); font-style: italic; margin-bottom: 10px;">NEW IN</h2>
-            <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 20px;">WOMEN'S</p>
-            
-            <div style="display: flex; gap: 15px; margin-bottom: 30px; overflow-x: auto;">
-                <button class="category-tab active">BRACELETS</button>
-                <button class="category-tab">NECKLACES</button>
-                <button class="category-tab">EARRINGS</button>
-                <button class="category-tab">RINGS</button>
-            </div>
-
-            <div class="grid-4" id="featured-grid">
-                <!-- Products injected via JS -->
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="shop.html" class="btn-outline">View All Women's</a>
-            </div>
-        </section>
-
-        <!-- New In Section: Men's -->
-        <section class="section-padding container">
-            <h2 style="font-size: 2.5rem; font-family: var(--font-serif); font-style: italic; margin-bottom: 10px;">NEW IN</h2>
-            <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 20px;">MEN'S</p>
-            
-            <div style="display: flex; gap: 15px; margin-bottom: 30px; overflow-x: auto;">
-                <button class="category-tab active">WATCHES</button>
-                <button class="category-tab">CHAINS</button>
-                <button class="category-tab">BRACELETS</button>
-            </div>
-
-            <div class="grid-4" id="men-grid">
-                <!-- Products injected via JS -->
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="shop.html" class="btn-outline">View All Men's</a>
-            </div>
-        </section>
-
-        <!-- Exclusive Section -->
-        <section class="section-padding container">
-            <h2 style="font-size: 2.5rem; font-family: var(--font-serif); font-style: italic; margin-bottom: 10px; color: var(--color-gold);">EXCLUSIVES</h2>
-            <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 20px;">MANGALSUTRA</p>
-            
-            <div class="grid-4" id="mangal-grid">
-                <!-- Products injected via JS -->
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="shop.html" class="btn-outline">View Collection</a>
-            </div>
-        </section>
-    </main>
-
-    <footer style="background-color: var(--color-emerald-dark); padding: 4rem 5% 2rem; color: var(--color-white); margin-top: 4rem;">
-        <div class="container footer-content" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
-            <div class="footer-col" style="grid-column: span 1;">
-                <div class="footer-brand" style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem;">MASAYA®</div>
-                <p class="footer-desc" style="color: rgba(255,255,255,0.7);">Crafting timeless elegance and modern luxury through exceptional watches and exquisite jewelry.</p>
-            </div>
-            <div class="footer-col">
-                <h4 style="font-family: var(--font-sans); color: var(--color-cream); margin-bottom: 1rem;">Collections</h4>
-                <ul style="list-style: none;">
-                    <li><a href="shop.html" style="color: rgba(255,255,255,0.7);">Men's</a></li>
-                    <li><a href="shop.html" style="color: rgba(255,255,255,0.7);">Women's</a></li>
-                    <li><a href="shop.html" style="color: rgba(255,255,255,0.7);">Jewelry</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 style="font-family: var(--font-sans); color: var(--color-cream); margin-bottom: 1rem;">Client Care</h4>
-                <ul style="list-style: none;">
-                    <li><a href="#" style="color: rgba(255,255,255,0.7);">Contact Us</a></li>
-                    <li><a href="#" style="color: rgba(255,255,255,0.7);">Servicing</a></li>
-                    <li><a href="#" style="color: rgba(255,255,255,0.7);">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
-            &copy; 2026 The Masaya Jwellery & Co. All rights reserved.
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        // Init Swiper Main slider
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay">
-        <div class="mobile-nav-content">
-            <i class="fas fa-times mobile-nav-close"></i>
-            <a href="shop.html">MEN</a>
-            <a href="shop.html">WOMEN</a>
-            <a href="shop.html">MANGALSUTRA</a>
-            <a href="shop.html">BAGS</a>
-            <a href="shop.html">CURATED SETS</a>
-            <a href="shop.html">GIFTING</a>
-        </div>
+      </div>
     </div>
+  </header>
 
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="search-overlay">
-        <div class="search-content">
-            <i class="fas fa-times search-close" id="search-close"></i>
-            <h2 style="color: var(--color-cream); margin-bottom: 2rem; font-size: 1.5rem;">SEARCH COLLECTIONS</h2>
-            <div class="search-input-wrapper">
-                <input type="text" id="search-input" placeholder="What are you looking for?" autocomplete="off">
-                <i class="fas fa-search"></i>
-            </div>
-            <div id="search-results" class="search-results"></div>
-        </div>
+  <aside class="mobile-drawer" id="mobile-drawer">
+    <header>
+      <div class="close-row">
+        <span class="brand" style="font-size:1.1rem;">MASAYA</span>
+        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+      </div>
+    </header>
+    <a href="index.html">Home</a>
+    <a href="rings.html">Rings</a>
+    <a href="necklaces.html">Necklaces</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="bracelets.html">Bracelets</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="product.html">Any product</a>
+  </aside>
+  <div class="drawer-overlay" id="mobile-overlay"></div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Collection</p>
+      <h1>Printemps by MASAYA</h1>
+      <p>Emerald glassmorphism meets everyday luxury. Explore curated drops across rings, necklaces, bracelets, earrings, and accessories.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="shop-now">Shop the drop</button>
+        <a class="btn ghost" href="rings.html" id="view-rings">View rings</a>
+      </div>
     </div>
+  </section>
 
-    <script src="js/data.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
+  <div class="container section-pad">
+    <div class="bar">
+      <div>
+        <h2 style="margin-bottom:8px;">Shop by category</h2>
+        <p style="color:var(--emerald-700);">Dedicated pages for faster browsing — Flipkart-style speed with a MASAYA finish.</p>
+      </div>
+    </div>
+    <div class="category-cards">
+      <a class="cat-card" href="rings.html"><div class="cat-icon"><i class="fas fa-gem"></i></div><div><strong>Rings</strong><div class="sub">Solitaire, halo, signature arcs</div></div></a>
+      <a class="cat-card" href="necklaces.html"><div class="cat-icon"><i class="fas fa-circle-notch"></i></div><div><strong>Necklaces</strong><div class="sub">Pendants, chains, glass leaves</div></div></a>
+      <a class="cat-card" href="earrings.html"><div class="cat-icon"><i class="fas fa-circle-dot"></i></div><div><strong>Earrings</strong><div class="sub">Studs, climbers, cuffs</div></div></a>
+      <a class="cat-card" href="bracelets.html"><div class="cat-icon"><i class="fas fa-link"></i></div><div><strong>Bracelets</strong><div class="sub">Tennis, cuffs, ribbon chains</div></div></a>
+      <a class="cat-card" href="accessories.html"><div class="cat-icon"><i class="fas fa-star"></i></div><div><strong>Accessories</strong><div class="sub">Anklets, clips, stacks</div></div></a>
+    </div>
+  </div>
+
+  <div class="container section-pad" id="catalog">
+    <div class="bar">
+      <div>
+        <h2 style="margin-bottom:6px;">Featured picks</h2>
+        <p style="color:var(--emerald-700);">Fast-loading grid with add-to-bag and INR pricing.</p>
+      </div>
+      <a class="btn ghost" href="rings.html">See all products</a>
+    </div>
+    <div class="grid" id="product-grid"></div>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>MASAYA Printemps</h4>
+        <p>Emerald-forward, glassy interface, built for mobile and desktop.</p>
+      </div>
+      <div>
+        <h4>Client Care</h4>
+        <p>3-year warranty · 30-day returns · Secure checkout.</p>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <p>WhatsApp concierge · Virtual try-on (coming soon).</p>
+      </div>
+    </div>
+    <div class="container banner" style="margin-top:22px;">
+      <i class="fas fa-shield-alt"></i>
+      <div><strong>Safe checkout.</strong> Payments in INR, COD on request, PCI compliant.</div>
+    </div>
+    <div style="text-align: center; margin-top: 18px; font-size: 0.9rem;">© 2026 MASAYA. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast">Added to cart</div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <div class="drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <strong>Your bag</strong>
+      <button class="icon-btn" id="drawer-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="drawer-body">
+      <p style="color:var(--emerald-700);">Cart preview coming soon.</p>
+    </div>
+  </div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/store.js"></script>
+  <script>
+    // Limit featured to first 12 items
+    const originalCatalog = [...catalog];
+    const featured = originalCatalog.slice(0,12);
+    window.catalog = featured;
+    Store.init('all');
+    // restore full catalog for other pages
+    window.catalog = originalCatalog;
+  </script>
 </body>
 </html>
