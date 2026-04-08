@@ -40,64 +40,72 @@ const ensureLoginModal = () => {
     modal.className = 'modal';
     modal.id = 'login-modal';
     modal.innerHTML = `
-      <div class="modal-card">
-        <div class="modal-row" style="justify-content:space-between;align-items:center;">
-          <h3 style="margin:0;">Sign in</h3>
+      <div class="modal-card glass-panel" style="padding:2rem; max-width:400px; width:90%;">
+        <div class="modal-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <h3 style="margin:0; font-family:var(--font-sans);">Account Access</h3>
           <button class="icon-btn" id="login-close" aria-label="Close login"><i class="fas fa-times"></i></button>
         </div>
-        <div class="modal-row" style="gap:8px;">
-          <label class="pill" style="padding:8px 12px;cursor:pointer;border:1px solid var(--stroke);">
-            <input type="radio" name="login-role" value="user" checked style="margin-right:6px;"> Customer / User
+        <div class="modal-row" style="display:flex; gap:8px; margin-bottom:1.5rem;">
+          <label class="pill" style="flex:1; padding:10px; cursor:pointer; border:1px solid var(--stroke); border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.4);">
+            <input type="radio" name="login-role" value="user" checked style="margin-right:8px;"> Customer
           </label>
-          <label class="pill" style="padding:8px 12px;cursor:pointer;border:1px solid var(--stroke);">
-            <input type="radio" name="login-role" value="admin" style="margin-right:6px;"> Admin
+          <label class="pill" style="flex:1; padding:10px; cursor:pointer; border:1px solid var(--stroke); border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.4);">
+            <input type="radio" name="login-role" value="admin" style="margin-right:8px;"> Admin
           </label>
         </div>
-        <div class="modal-row" style="gap:10px;flex-direction:column;">
-          <input type="email" id="login-email" placeholder="Email" required>
-          <input type="password" id="login-pass" placeholder="Password" required>
-          <div class="modal-row" style="justify-content:space-between;">
-            <button class="btn primary" id="login-submit" style="width:100%;">Continue</button>
-          </div>
-          <button class="btn ghost" id="login-google" style="width:100%;border:1px solid var(--stroke);color:var(--emerald-900);background:#fff;">
+        <div class="modal-row" style="display:flex; gap:12px; flex-direction:column;">
+          <input type="email" id="login-email" placeholder="Email Address" style="padding:12px; border-radius:10px; border:1px solid var(--stroke); background:rgba(255,255,255,0.8);">
+          <input type="password" id="login-pass" placeholder="Password" style="padding:12px; border-radius:10px; border:1px solid var(--stroke); background:rgba(255,255,255,0.8);">
+          <button class="btn primary add-wide" id="login-submit" style="margin-top:0.5rem;">Sign In</button>
+          <button class="btn ghost add-wide" id="login-google" style="border:1px solid var(--stroke); color:var(--emerald-900); background:#fff; margin-top:0.5rem;">
             <i class="fab fa-google" style="margin-right:8px;"></i>Continue with Google
           </button>
         </div>
       </div>`;
     document.body.appendChild(modal);
+
+    // Bind inner events once
+    modal.querySelector('#login-close')?.addEventListener('click', () => modal.classList.remove('show'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+    
+    const handleLogin = (e) => {
+      const role = modal.querySelector('input[name="login-role"]:checked')?.value || 'user';
+      localStorage.setItem('masaya_role', role);
+      showToast(`Welcome back, ${role === 'admin' ? 'Curator' : 'Guest'}`);
+      modal.classList.remove('show');
+    };
+    modal.querySelector('#login-submit')?.addEventListener('click', handleLogin);
+    modal.querySelector('#login-google')?.addEventListener('click', handleLogin);
   }
+};
 
-  const modal = document.getElementById('login-modal');
-  const close = () => modal?.classList.remove('show');
-  const open = (role) => {
-    modal?.classList.add('show');
-    const radios = modal.querySelectorAll('input[name="login-role"]');
-    radios.forEach((r) => { r.checked = r.value === role; });
-  };
+const ensureCartDrawer = () => {
+  if (!document.getElementById('cart-drawer')) {
+    const drawer = document.createElement('div');
+    drawer.className = 'drawer';
+    drawer.id = 'cart-drawer';
+    drawer.innerHTML = `
+      <div class="drawer-header" style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; border-bottom:1px solid var(--stroke);">
+        <strong style="font-size:1.2rem;">Your Luxury Bag</strong>
+        <button class="icon-btn" id="drawer-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="drawer-body" style="padding:1.5rem; flex:1; overflow-y:auto;">
+        <p style="color:var(--emerald-700);">Your bag is currently empty.</p>
+      </div>
+      <div class="drawer-footer" style="padding:1.5rem; border-top:1px solid var(--stroke);">
+        <button class="btn primary add-wide" onclick="location.href='cart.html'">View Full Bag</button>
+      </div>`;
+    document.body.appendChild(drawer);
 
-  document.querySelectorAll('#login-user').forEach((btn) => {
-    btn.onclick = (e) => { e.preventDefault(); open('user'); };
-  });
-  document.querySelectorAll('#login-admin').forEach((btn) => {
-    btn.onclick = (e) => { e.preventDefault(); open('admin'); };
-  });
+    const overlay = document.createElement('div');
+    overlay.className = 'drawer-overlay';
+    overlay.id = 'drawer-overlay';
+    document.body.appendChild(overlay);
 
-  modal.querySelector('#login-close')?.addEventListener('click', close);
-  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-
-  modal.querySelector('#login-submit')?.addEventListener('click', () => {
-    const role = modal.querySelector('input[name="login-role"]:checked')?.value || 'user';
-    localStorage.setItem('masaya_role', role);
-    showToast(`Signed in as ${role}`);
-    close();
-  });
-
-  modal.querySelector('#login-google')?.addEventListener('click', () => {
-    const role = modal.querySelector('input[name="login-role"]:checked')?.value || 'user';
-    localStorage.setItem('masaya_role', role);
-    showToast(`Google login as ${role}`);
-    close();
-  });
+    const close = () => { drawer.classList.remove('show'); overlay.classList.remove('show'); };
+    drawer.querySelector('#drawer-close')?.addEventListener('click', close);
+    overlay.addEventListener('click', close);
+  }
 };
 
 const cardTemplate = (p) => `
@@ -236,91 +244,82 @@ const cardTemplate = (p) => `
 
 const bindGlobalUI = () => {
   ensureLoginModal();
-  // search
+  ensureCartDrawer();
+  
+  // Delegation for global triggers - handles all buttons even if dynamically added
+  document.addEventListener('click', (e) => {
+    // Cart open
+    const cartBtn = e.target.closest('#cart-btn, .cart-btn');
+    if (cartBtn) {
+      e.preventDefault();
+      document.getElementById('cart-drawer')?.classList.add('show');
+      document.getElementById('drawer-overlay')?.classList.add('show');
+      return;
+    }
+
+    // Login user
+    const userBtn = e.target.closest('#login-user, .login-user, [aria-label="Account"]');
+    if (userBtn) {
+      e.preventDefault();
+      const modal = document.getElementById('login-modal');
+      if (modal) {
+        modal.classList.add('show');
+        modal.querySelector('input[value="user"]').checked = true;
+      }
+      return;
+    }
+
+    // Login admin
+    const adminBtn = e.target.closest('#login-admin, .login-admin');
+    if (adminBtn) {
+      e.preventDefault();
+      const modal = document.getElementById('login-modal');
+      if (modal) {
+        modal.classList.add('show');
+        modal.querySelector('input[value="admin"]').checked = true;
+      }
+      return;
+    }
+  });
+
+  // Search functionality
   const searchInput = document.getElementById('search-input');
   searchInput?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       search(e.target.value.trim());
-      }
-    });
-
-    // sticky nav
-    const navEl = document.querySelector('.nav');
-    const onScroll = () => {
-      if (!navEl) return;
-      navEl.classList.toggle('nav-scrolled', window.scrollY > 40);
-    };
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-
-    // cart drawer
-    const drawer = document.getElementById('cart-drawer');
-    const overlay = document.getElementById('drawer-overlay');
-    const openDrawer = () => { drawer?.classList.add('show'); overlay?.classList.add('show'); };
-    const closeDrawer = () => { drawer?.classList.remove('show'); overlay?.classList.remove('show'); };
-    document.querySelectorAll('#cart-btn').forEach((btn) => btn.addEventListener('click', openDrawer));
-    overlay?.addEventListener('click', closeDrawer);
-    document.getElementById('drawer-close')?.addEventListener('click', closeDrawer);
-
-    // mobile nav
-    const openM = () => {
-      const drawer = document.getElementById('mobile-drawer');
-      const overlay = document.getElementById('mobile-overlay');
-      if (!drawer || !overlay) return;
-      drawer.classList.add('show');
-      overlay.classList.add('show');
-    };
-
-    const closeM = () => {
-      const drawer = document.getElementById('mobile-drawer');
-      const overlay = document.getElementById('mobile-overlay');
-      if (!drawer || !overlay) return;
-      drawer.classList.remove('show');
-      overlay.classList.remove('show');
-    };
-
-    document.querySelectorAll('.mobile-nav-btn').forEach((btn) => {
-      if (btn.dataset.bound === '1') return;
-      btn.dataset.bound = '1';
-      btn.addEventListener('click', (e) => { e.preventDefault(); openM(); });
-    });
-    const closeBtn = document.getElementById('mobile-close');
-    if (closeBtn && closeBtn.dataset.bound !== '1') {
-      closeBtn.dataset.bound = '1';
-      closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeM(); });
     }
-    const mOverlay = document.getElementById('mobile-overlay');
-    if (mOverlay && mOverlay.dataset.bound !== '1') {
-      mOverlay.dataset.bound = '1';
-      mOverlay.addEventListener('click', (e) => { e.preventDefault(); closeM(); });
-    }
+  });
 
-    // delegation fallback to catch any missed buttons
-    if (!document.body.dataset.navDelegated) {
-      document.body.dataset.navDelegated = '1';
-      document.body.addEventListener('click', (e) => {
-        if (e.target.closest('.mobile-nav-btn')) {
-          e.preventDefault();
-          openM();
-        }
-        if (e.target.closest('#mobile-close') || e.target.closest('#mobile-overlay')) {
-          e.preventDefault();
-          closeM();
-        }
-      });
-    }
-
-    // rails arrows
-    document.querySelectorAll('.rail').forEach((rail) => {
-      const inner = rail.querySelector('.rail-inner');
-      rail.querySelector('[data-arrow="left"]')?.addEventListener('click', () => inner.scrollBy({ left: -320, behavior: 'smooth' }));
-      rail.querySelector('[data-arrow="right"]')?.addEventListener('click', () => inner.scrollBy({ left: 320, behavior: 'smooth' }));
-    });
-
-    // login/admin
-    const userBtn = document.getElementById('login-user');
-    userBtn?.addEventListener('click', () => { state.role = 'user'; localStorage.setItem('masaya_role', 'user'); showToast('Signed in as user'); });
+  // Sticky nav logic
+  const navEl = document.querySelector('.nav, .site-header');
+  const onScroll = () => {
+    if (!navEl) return;
+    navEl.classList.toggle('nav-scrolled', window.scrollY > 40);
   };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Mobile nav delegation (Unified)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#mobile-open, .mobile-nav-btn, .menu-btn')) {
+      e.preventDefault();
+      document.getElementById('mobile-drawer')?.classList.add('show');
+      document.getElementById('mobile-overlay')?.classList.add('show');
+    }
+    if (e.target.closest('#mobile-close, #mobile-overlay')) {
+      e.preventDefault();
+      document.getElementById('mobile-drawer')?.classList.remove('show');
+      document.getElementById('mobile-overlay')?.classList.remove('show');
+    }
+  });
+
+  // Rails arrows
+  document.querySelectorAll('.rail').forEach((rail) => {
+    const inner = rail.querySelector('.rail-inner');
+    rail.querySelector('[data-arrow="left"]')?.addEventListener('click', () => inner.scrollBy({ left: -320, behavior: 'smooth' }));
+    rail.querySelector('[data-arrow="right"]')?.addEventListener('click', () => inner.scrollBy({ left: 320, behavior: 'smooth' }));
+  });
+};
 
 const ensureMobileChrome = () => {
   // create drawer + overlay if missing (safety for pages not updated)
@@ -401,5 +400,7 @@ const initCategory = (category) => {
   bindGlobalUI();
 };
 
-initPage();
-window.Store = { init: initCategory, setCart };
+if (!window.NO_AUTO_INIT) {
+  initPage();
+}
+window.Store = { init: initCategory, setCart, bindGlobalUI, ensureLoginModal, ensureCartDrawer, ensureMobileChrome };

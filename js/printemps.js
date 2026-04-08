@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'white',
       stone: 'white',
       design: 'torsade',
-      price: 29700,
+      price: 299,
       badge: 'New',
       chips: ['Sterling silver', 'White zirconia'],
       image: 'https://images.pexels.com/photos/2675323/pexels-photo-2675323.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'yellow',
       stone: 'white',
       design: 'geometric',
-      price: 33000,
+      price: 350,
       chips: ['Yellow vermeil', 'Pave zirconia'],
       image: 'https://images.pexels.com/photos/1457801/pexels-photo-1457801.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 1
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'white',
       stone: 'white',
       design: 'lumiere',
-      price: 40700,
+      price: 499,
       chips: ['Adjustable chain', 'Signature sparkle'],
       image: 'https://images.pexels.com/photos/247296/pexels-photo-247296.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 2
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'white',
       stone: 'white',
       design: 'lumiere',
-      price: 19800,
+      price: 199,
       chips: ['Everyday size', 'Lightweight'],
       image: 'https://images.pexels.com/photos/1413420/pexels-photo-1413420.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 3
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'lavender',
       stone: 'purple',
       design: 'lumiere',
-      price: 35200,
+      price: 450,
       badge: 'Limited',
       chips: ['Lavender lacquer', 'Pave zirconia'],
       image: 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'white',
       stone: 'white',
       design: 'artdeco',
-      price: 11000,
+      price: 150,
       chips: ['No piercing', 'Stack friendly'],
       image: 'https://images.pexels.com/photos/1457798/pexels-photo-1457798.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 5
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'yellow',
       stone: 'white',
       design: 'artdeco',
-      price: 28600,
+      price: 399,
       chips: ['Heart motif', 'Adjustable drop'],
       image: 'https://images.pexels.com/photos/1458867/pexels-photo-1458867.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 6
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 'rose',
       stone: 'white',
       design: 'torsade',
-      price: 26400,
+      price: 320,
       chips: ['Rose vermeil', 'Layered look'],
       image: 'https://images.pexels.com/photos/1457816/pexels-photo-1457816.jpeg?auto=compress&cs=tinysrgb&w=1200',
       order: 7
@@ -125,9 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const priceBandMatches = (price, bands) => {
     if (bands.length === 0) return true;
     return bands.some((band) => {
-      if (band === 'low') return price <= 20000;
-      if (band === 'mid') return price > 20000 && price <= 40000;
-      if (band === 'high') return price > 40000;
+      if (band === 'low') return price <= 250;
+      if (band === 'mid') return price > 250 && price <= 400;
+      if (band === 'high') return price > 400;
       return true;
     });
   };

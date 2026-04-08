@@ -31,8 +31,8 @@
       <button class="mobile-nav-btn" id="mobile-open" aria-label="Open menu"><i class="fas fa-bars"></i></button>
       <div class="actions">
         <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
-        <button class="icon-btn" id="login-user" aria-label="User login"><i class="fas fa-user"></i></button>
-        <button class="icon-btn" id="login-admin" aria-label="Admin portal"><i class="fas fa-key"></i></button>
+        <button class="icon-btn login-user" id="login-user" aria-label="User login"><i class="fas fa-user"></i></button>
+        <button class="icon-btn login-admin" id="login-admin" aria-label="Admin portal"><i class="fas fa-key"></i></button>
         <div style="position: relative;">
           <button class="icon-btn" id="cart-btn" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="cart-dot" id="cart-count">0</span></button>
         </div>
@@ -82,8 +82,8 @@
           <option value="new">Newest</option>
         </select>
         <label for="price-max">Max ₹</label>
-        <input type="range" id="price-max" min="800" max="52000" step="500" value="52000">
-        <span id="price-label">Up to ₹52,000</span>
+        <input type="range" id="price-max" min="99" max="499" step="10" value="499">
+        <span id="price-label">Up to ₹499</span>
       </div>
     </div>
     <div class="filters" id="category-filters"></div>

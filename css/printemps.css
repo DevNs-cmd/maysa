@@ -1,6 +1,6 @@
 :root {
   --bg: #f7f5fb;
-  --panel: #ffffff;
+  --panel: rgba(255, 255, 255, 0.45);
   --purple-900: #2f1d46;
   --purple-700: #4c2f6c;
   --purple-500: #6f4ba1;
@@ -8,8 +8,15 @@
   --purple-100: #f1ecff;
   --text: #261b32;
   --muted: #6a5c7d;
-  --border: #e7e1f5;
-  --shadow: 0 20px 60px rgba(47, 29, 70, 0.08);
+  --border: rgba(255, 255, 255, 0.25);
+  --shadow: 0 10px 40px rgba(47, 29, 70, 0.05);
+  --blur: blur(30px) saturate(210%);
+  --radius-lg: 32px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --stroke: rgba(255, 255, 255, 0.2);
+  --card: rgba(255, 255, 255, 0.45);
+  --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
   font-size: 16px;
 }
 
@@ -50,8 +57,9 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);
-  background: rgba(247, 245, 251, 0.88);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  background: rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -335,13 +343,15 @@ a { color: inherit; text-decoration: none; }
 
 .product-card {
   background: var(--panel);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
 }
 
 .product-card:hover {
@@ -495,3 +505,30 @@ a { color: inherit; text-decoration: none; }
   .hero { height: 70vh; }
   .hero-content { padding-top: 100px; }
 }
+
+/* Unified Global UI Styles */
+.modal {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 100;
+}
+.modal.show { opacity: 1; pointer-events: all; }
+.glass-panel {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+}
+.modal-card { width: min(420px, 90vw); border-radius: 24px; z-index: 101; }
+.drawer {
+  position: fixed; top: 0; right: 0; width: min(360px, 90vw); height: 100vh;
+  background: #fff; border-left: 1px solid var(--stroke); box-shadow: -12px 0 30px rgba(0,0,0,0.12);
+  transform: translateX(100%); transition: transform .28s ease; z-index: 90; display: flex; flex-direction: column;
+}
+.drawer.show { transform: translateX(0); }
+.drawer-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.35); opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 85;
+}
+.drawer-overlay.show { opacity: 1; pointer-events: all; }
+.add-wide { width: 100%; border-radius: 12px; padding: 14px; font-weight: 700; }
+.icon-btn i { pointer-events: none; }

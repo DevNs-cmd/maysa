@@ -13,11 +13,11 @@
 <body>
   <!-- Top bar -->
   <div class="topbar">
-    <span>3-year warranty</span>
+    <span>EVERYTHING UNDER ₹500</span>
     <span>·</span>
-    <span>Free shipping over ₹15,500</span>
+    <span>Free shipping on all orders</span>
     <span>·</span>
-    <span>Worldwide shipping</span>
+    <span>Limited Collection</span>
   </div>
 
   <!-- Header -->
@@ -115,9 +115,9 @@
       <div class="filter-group">
         <div class="filter-group__title">Price band</div>
         <div class="pill-group" data-filter="price">
-          <label><input type="checkbox" value="low">Up to ₹20,000</label>
-          <label><input type="checkbox" value="mid">₹20,000 - ₹40,000</label>
-          <label><input type="checkbox" value="high">₹40,000 and above</label>
+          <label><input type="checkbox" value="low">Up to ₹250</label>
+          <label><input type="checkbox" value="mid">₹250 - ₹400</label>
+          <label><input type="checkbox" value="high">₹400 and above</label>
         </div>
       </div>
 
@@ -168,6 +168,13 @@
     <div class="footer-bottom">© 2026 MASAYA. All rights reserved.</div>
   </footer>
 
+  <script>window.NO_AUTO_INIT = true;</script>
+  <script src="js/store.js"></script>
   <script src="js/printemps.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Store.bindGlobalUI();
+    });
+  </script>
 </body>
 </html>
