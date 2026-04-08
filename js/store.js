@@ -34,7 +34,73 @@ const showToast = (msg) => {
   setTimeout(() => t.classList.remove('show'), 1400);
 };
 
-  const cardTemplate = (p) => `
+const ensureLoginModal = () => {
+  if (!document.getElementById('login-modal')) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'login-modal';
+    modal.innerHTML = `
+      <div class="modal-card">
+        <div class="modal-row" style="justify-content:space-between;align-items:center;">
+          <h3 style="margin:0;">Sign in</h3>
+          <button class="icon-btn" id="login-close" aria-label="Close login"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-row" style="gap:8px;">
+          <label class="pill" style="padding:8px 12px;cursor:pointer;border:1px solid var(--stroke);">
+            <input type="radio" name="login-role" value="user" checked style="margin-right:6px;"> Customer / User
+          </label>
+          <label class="pill" style="padding:8px 12px;cursor:pointer;border:1px solid var(--stroke);">
+            <input type="radio" name="login-role" value="admin" style="margin-right:6px;"> Admin
+          </label>
+        </div>
+        <div class="modal-row" style="gap:10px;flex-direction:column;">
+          <input type="email" id="login-email" placeholder="Email" required>
+          <input type="password" id="login-pass" placeholder="Password" required>
+          <div class="modal-row" style="justify-content:space-between;">
+            <button class="btn primary" id="login-submit" style="width:100%;">Continue</button>
+          </div>
+          <button class="btn ghost" id="login-google" style="width:100%;border:1px solid var(--stroke);color:var(--emerald-900);background:#fff;">
+            <i class="fab fa-google" style="margin-right:8px;"></i>Continue with Google
+          </button>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+  }
+
+  const modal = document.getElementById('login-modal');
+  const close = () => modal?.classList.remove('show');
+  const open = (role) => {
+    modal?.classList.add('show');
+    const radios = modal.querySelectorAll('input[name="login-role"]');
+    radios.forEach((r) => { r.checked = r.value === role; });
+  };
+
+  document.querySelectorAll('#login-user').forEach((btn) => {
+    btn.onclick = (e) => { e.preventDefault(); open('user'); };
+  });
+  document.querySelectorAll('#login-admin').forEach((btn) => {
+    btn.onclick = (e) => { e.preventDefault(); open('admin'); };
+  });
+
+  modal.querySelector('#login-close')?.addEventListener('click', close);
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+
+  modal.querySelector('#login-submit')?.addEventListener('click', () => {
+    const role = modal.querySelector('input[name="login-role"]:checked')?.value || 'user';
+    localStorage.setItem('masaya_role', role);
+    showToast(`Signed in as ${role}`);
+    close();
+  });
+
+  modal.querySelector('#login-google')?.addEventListener('click', () => {
+    const role = modal.querySelector('input[name="login-role"]:checked')?.value || 'user';
+    localStorage.setItem('masaya_role', role);
+    showToast(`Google login as ${role}`);
+    close();
+  });
+};
+
+const cardTemplate = (p) => `
     <article class="card reveal" id="card-${p.id}" data-id="${p.id}">
       ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
       <a href="product.html?id=${p.id}">
@@ -168,12 +234,13 @@ const showToast = (msg) => {
     }
   };
 
-  const bindGlobalUI = () => {
-    // search
-    const searchInput = document.getElementById('search-input');
-    searchInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        search(e.target.value.trim());
+const bindGlobalUI = () => {
+  ensureLoginModal();
+  // search
+  const searchInput = document.getElementById('search-input');
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      search(e.target.value.trim());
       }
     });
 
