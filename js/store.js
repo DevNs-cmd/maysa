@@ -77,6 +77,24 @@ const ensureLoginModal = () => {
     modal.querySelector('#login-submit')?.addEventListener('click', handleLogin);
     modal.querySelector('#login-google')?.addEventListener('click', handleLogin);
   }
+  // delegate triggers globally
+  if (!document.body.dataset.loginDelegated) {
+    document.body.dataset.loginDelegated = '1';
+    document.body.addEventListener('click', (e) => {
+      if (e.target.closest('#login-user') || e.target.closest('.login-user')) {
+        e.preventDefault();
+        document.getElementById('login-modal')?.classList.add('show');
+        const userRadio = document.querySelector('input[name=\"login-role\"][value=\"user\"]');
+        if (userRadio) userRadio.checked = true;
+      }
+      if (e.target.closest('#login-admin') || e.target.closest('.login-admin')) {
+        e.preventDefault();
+        document.getElementById('login-modal')?.classList.add('show');
+        const adminRadio = document.querySelector('input[name=\"login-role\"][value=\"admin\"]');
+        if (adminRadio) adminRadio.checked = true;
+      }
+    });
+  }
 };
 
 const ensureCartDrawer = () => {
