@@ -17,22 +17,22 @@ const state = {
 
 const formatINR = (p) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(p);
 
-  const setCart = (items) => {
-    state.cart = items;
-    localStorage.setItem(STORAGE_CART, JSON.stringify(items));
-    localStorage.setItem(STORAGE_COUNT, String(items.reduce((s, i) => s + i.qty, 0)));
-    const count = items.reduce((s, i) => s + i.qty, 0);
-    document.querySelectorAll('#cart-count').forEach((el) => (el.textContent = count));
-    renderCart();
-  };
+const setCart = (items) => {
+  state.cart = items;
+  localStorage.setItem(STORAGE_CART, JSON.stringify(items));
+  localStorage.setItem(STORAGE_COUNT, String(items.reduce((s, i) => s + i.qty, 0)));
+  const count = items.reduce((s, i) => s + i.qty, 0);
+  document.querySelectorAll('#cart-count').forEach((el) => (el.textContent = count));
+  renderCart();
+};
 
-  const showToast = (msg) => {
-    const t = document.getElementById('toast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 1400);
-  };
+const showToast = (msg) => {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1400);
+};
 
   const cardTemplate = (p) => `
     <article class="card reveal" id="card-${p.id}" data-id="${p.id}">
@@ -294,6 +294,23 @@ const ensureMobileChrome = () => {
       btn.innerHTML = '<i class=\"fas fa-bars\"></i>';
       nav.insertBefore(btn, nav.querySelector('.actions'));
     }
+  }
+  // bind open/close once
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+  const openBtn = document.getElementById('mobile-open');
+  const closeBtn = document.getElementById('mobile-close');
+  const open = () => { drawer?.classList.add('show'); overlay?.classList.add('show'); };
+  const close = () => { drawer?.classList.remove('show'); overlay?.classList.remove('show'); };
+  if (openBtn && !openBtn.dataset.bound) { openBtn.dataset.bound='1'; openBtn.addEventListener('click', (e)=>{e.preventDefault(); open();}); }
+  if (closeBtn && !closeBtn.dataset.bound) { closeBtn.dataset.bound='1'; closeBtn.addEventListener('click', (e)=>{e.preventDefault(); close();}); }
+  if (overlay && !overlay.dataset.bound) { overlay.dataset.bound='1'; overlay.addEventListener('click', (e)=>{e.preventDefault(); close();}); }
+  if (!document.body.dataset.navDelegated) {
+    document.body.dataset.navDelegated='1';
+    document.body.addEventListener('click', (e)=>{
+      if (e.target.closest('#mobile-open')) { e.preventDefault(); open(); }
+      if (e.target.closest('#mobile-close') || e.target.closest('#mobile-overlay')) { e.preventDefault(); close(); }
+    });
   }
 };
 

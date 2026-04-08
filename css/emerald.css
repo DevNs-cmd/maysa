@@ -292,6 +292,7 @@ footer h4{margin-bottom:8px;letter-spacing:0.08em;}
   width:100%;padding:10px 12px;border:1px solid var(--stroke);border-radius:10px;
   background:rgba(255,255,255,0.9);
 }
+.modal-card .modal-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .drawer-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,0.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:40;
 }
