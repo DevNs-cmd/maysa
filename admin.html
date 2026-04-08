@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASAYA Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/emerald.css">
+  <style>
+    body{background:linear-gradient(160deg,#f6f3ec,#eaf5ef);}
+    .admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0;}
+    .card-admin{background:#fff;border:1px solid var(--stroke);border-radius:14px;padding:12px;box-shadow:0 12px 28px rgba(0,0,0,0.06);}
+    .card-admin h4{margin:0;font-size:1rem;}
+    .table-wrap{overflow:auto;border:1px solid var(--stroke);border-radius:12px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,0.05);}
+    .table{width:100%;border-collapse:collapse;font-size:0.9rem;min-width:420px;}
+    .table th,.table td{padding:8px 10px;border-bottom:1px solid var(--stroke);text-align:left;}
+    .badge-pill{padding:4px 10px;border-radius:999px;background:rgba(31,106,75,0.12);color:var(--emerald-800);font-size:0.82rem;}
+    .flex{display:flex;align-items:center;gap:8px;}
+    .form-grid{display:grid;gap:10px;}
+    input,select{padding:10px;border:1px solid var(--stroke);border-radius:10px;}
+    .btn-primary{background:var(--emerald-800);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;}
+    .status-dot{width:10px;height:10px;border-radius:50%;}
+    @media(max-width:768px){
+      .brand{font-size:1.1rem;}
+      .card-admin{padding:10px;}
+      .badge-pill{font-size:0.75rem;}
+      .btn-primary{padding:11px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>MASAYA Admin</span><span>|</span><span>Live overview</span><span>|</span><span>Inventory & delivery</span>
+    </div>
+  </div>
+  <header>
+    <div class="nav">
+      <div class="brand">MASAYA Admin</div>
+      <div class="actions" style="gap:8px;">
+        <button class="mobile-nav-btn" id="mobile-open" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+        <a class="icon-btn" href="index.html" aria-label="Back to store"><i class="fas fa-store"></i></a>
+        <a class="icon-btn" href="rings.html" aria-label="Rings"><i class="fas fa-gem"></i></a>
+        <a class="icon-btn" href="necklaces.html" aria-label="Necklaces"><i class="fas fa-circle-notch"></i></a>
+        <a class="icon-btn" href="bracelets.html" aria-label="Bracelets"><i class="fas fa-link"></i></a>
+        <button class="icon-btn" id="admin-logout" aria-label="Logout"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+    </div>
+  </header>
+  <aside class="mobile-drawer" id="mobile-drawer">
+    <header>
+      <div class="close-row">
+        <span class="brand" style="font-size:1.1rem;">MASAYA</span>
+        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+      </div>
+    </header>
+    <a href="index.html">Home</a>
+    <a href="rings.html">Rings</a>
+    <a href="necklaces.html">Necklaces</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="bracelets.html">Bracelets</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="product.html">Any product</a>
+  </aside>
+  <div class="drawer-overlay" id="mobile-overlay"></div>
+  <aside class="mobile-drawer" id="mobile-drawer">
+    <header>
+      <div class="close-row">
+        <span class="brand" style="font-size:1.1rem;">MASAYA</span>
+        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+      </div>
+    </header>
+    <a href="index.html">Home</a>
+    <a href="rings.html">Rings</a>
+    <a href="necklaces.html">Necklaces</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="bracelets.html">Bracelets</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="product.html">Any product</a>
+  </aside>
+  <div class="drawer-overlay" id="mobile-overlay"></div>
+
+  <main class="container section-pad" style="max-width:1100px;">
+    <div class="admin-grid">
+      <div class="card-admin">
+        <div class="flex" style="justify-content:space-between;"><h4>Visitors today</h4><span class="badge-pill" id="kpi-imp">0</span></div>
+        <p style="color:var(--emerald-700);margin-top:6px;">Impressions / sessions.</p>
+      </div>
+      <div class="card-admin">
+        <div class="flex" style="justify-content:space-between;"><h4>Orders today</h4><span class="badge-pill" id="kpi-orders">0</span></div>
+        <p style="color:var(--emerald-700);margin-top:6px;">Placed via MASAYA store.</p>
+      </div>
+      <div class="card-admin">
+        <div class="flex" style="justify-content:space-between;"><h4>Active delivery</h4><span class="badge-pill" id="kpi-active">0</span></div>
+        <p style="color:var(--emerald-700);margin-top:6px;">Delivery partners online.</p>
+      </div>
+      <div class="card-admin">
+        <div class="flex" style="justify-content:space-between;"><h4>Low stock alerts</h4><span class="badge-pill" id="kpi-low">0</span></div>
+        <p style="color:var(--emerald-700);margin-top:6px;">Items &lt; 5 units.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:18px 0 8px;">Products</h3>
+    <div class="table-wrap">
+      <table class="table" id="admin-products">
+        <thead><tr><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h3 style="margin:18px 0 8px;">Add / Update product</h3>
+    <div class="card-admin">
+      <form id="admin-form" class="form-grid">
+        <input type="text" name="name" placeholder="Product name" required>
+        <select name="category" required>
+          <option value="rings">Rings</option>
+          <option value="necklaces">Necklaces</option>
+          <option value="earrings">Earrings</option>
+          <option value="bracelets">Bracelets</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <input type="number" name="price" placeholder="Price (INR)" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <input type="url" name="img" placeholder="Primary image URL" required>
+        <input type="url" name="img2" placeholder="Secondary image URL (optional)">
+        <input type="text" name="badge" placeholder="Badge e.g. New, Limited">
+        <button class="btn-primary" type="submit">Save & Publish</button>
+      </form>
+    </div>
+
+    <h3 style="margin:18px 0 8px;">Delivery partners</h3>
+    <div class="table-wrap">
+      <table class="table" id="admin-delivery">
+        <thead><tr><th>Name</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast">Saved</div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

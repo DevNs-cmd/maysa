@@ -196,15 +196,52 @@ const formatINR = (p) => new Intl.NumberFormat('en-IN', { style: 'currency', cur
     document.getElementById('drawer-close')?.addEventListener('click', closeDrawer);
 
     // mobile nav
-    const mDrawer = document.getElementById('mobile-drawer');
+    const openM = () => {
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-overlay');
+      if (!drawer || !overlay) return;
+      drawer.classList.add('show');
+      overlay.classList.add('show');
+    };
+
+    const closeM = () => {
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('mobile-overlay');
+      if (!drawer || !overlay) return;
+      drawer.classList.remove('show');
+      overlay.classList.remove('show');
+    };
+
+    document.querySelectorAll('.mobile-nav-btn').forEach((btn) => {
+      if (btn.dataset.bound === '1') return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', (e) => { e.preventDefault(); openM(); });
+    });
+    const closeBtn = document.getElementById('mobile-close');
+    if (closeBtn && closeBtn.dataset.bound !== '1') {
+      closeBtn.dataset.bound = '1';
+      closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeM(); });
+    }
     const mOverlay = document.getElementById('mobile-overlay');
-    const mOpen = document.getElementById('mobile-open');
-    const mClose = document.getElementById('mobile-close');
-    const openM = () => { mDrawer?.classList.add('show'); mOverlay?.classList.add('show'); };
-    const closeM = () => { mDrawer?.classList.remove('show'); mOverlay?.classList.remove('show'); };
-    mOpen?.addEventListener('click', openM);
-    mClose?.addEventListener('click', closeM);
-    mOverlay?.addEventListener('click', closeM);
+    if (mOverlay && mOverlay.dataset.bound !== '1') {
+      mOverlay.dataset.bound = '1';
+      mOverlay.addEventListener('click', (e) => { e.preventDefault(); closeM(); });
+    }
+
+    // delegation fallback to catch any missed buttons
+    if (!document.body.dataset.navDelegated) {
+      document.body.dataset.navDelegated = '1';
+      document.body.addEventListener('click', (e) => {
+        if (e.target.closest('.mobile-nav-btn')) {
+          e.preventDefault();
+          openM();
+        }
+        if (e.target.closest('#mobile-close') || e.target.closest('#mobile-overlay')) {
+          e.preventDefault();
+          closeM();
+        }
+      });
+    }
 
     // rails arrows
     document.querySelectorAll('.rail').forEach((rail) => {
@@ -215,40 +252,53 @@ const formatINR = (p) => new Intl.NumberFormat('en-IN', { style: 'currency', cur
 
     // login/admin
     const userBtn = document.getElementById('login-user');
-    const adminBtn = document.getElementById('login-admin');
-    const adminForm = document.getElementById('admin-form');
-    const adminModal = document.getElementById('admin-modal');
-    const adminClose = document.getElementById('admin-close');
     userBtn?.addEventListener('click', () => { state.role = 'user'; localStorage.setItem('masaya_role', 'user'); showToast('Signed in as user'); });
-    adminBtn?.addEventListener('click', () => adminModal?.classList.add('show'));
-    adminClose?.addEventListener('click', () => adminModal?.classList.remove('show'));
-    adminForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(adminForm));
-      if (data.secret !== ADMIN_KEY) {
-        showToast('Wrong secret key');
-        return;
-      }
-      state.role = 'admin';
-      localStorage.setItem('masaya_role', 'admin');
-      // add product
-      const newProduct = {
-        name: data.name,
-        category: data.category,
-        price: Number(data.price || 0),
-        img: data.img,
-        img2: data.img2 || data.img,
-        badge: data.badge || '',
-        swatches: ['#e9f5ef', '#1f6a4b', '#d6c59a'],
-      };
-      const stored = JSON.parse(localStorage.getItem(STORAGE_ADMIN_PRODUCTS) || '[]');
-      stored.push(newProduct);
-      localStorage.setItem(STORAGE_ADMIN_PRODUCTS, JSON.stringify(stored));
-      window.location.reload();
-    });
   };
 
+const ensureMobileChrome = () => {
+  // create drawer + overlay if missing (safety for pages not updated)
+  if (!document.getElementById('mobile-drawer')) {
+    const drawer = document.createElement('aside');
+    drawer.className = 'mobile-drawer';
+    drawer.id = 'mobile-drawer';
+    drawer.innerHTML = `
+      <header>
+        <div class="close-row">
+          <span class="brand" style="font-size:1.1rem;">MASAYA</span>
+          <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+        </div>
+      </header>
+      <a href="index.html">Home</a>
+      <a href="rings.html">Rings</a>
+      <a href="necklaces.html">Necklaces</a>
+      <a href="earrings.html">Earrings</a>
+      <a href="bracelets.html">Bracelets</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="product.html">Any product</a>`;
+    document.body.appendChild(drawer);
+  }
+  if (!document.getElementById('mobile-overlay')) {
+    const ov = document.createElement('div');
+    ov.className = 'drawer-overlay';
+    ov.id = 'mobile-overlay';
+    document.body.appendChild(ov);
+  }
+  // ensure hamburger exists
+  if (!document.getElementById('mobile-open')) {
+    const nav = document.querySelector('.nav');
+    if (nav) {
+      const btn = document.createElement('button');
+      btn.className = 'mobile-nav-btn';
+      btn.id = 'mobile-open';
+      btn.setAttribute('aria-label','Open menu');
+      btn.innerHTML = '<i class=\"fas fa-bars\"></i>';
+      nav.insertBefore(btn, nav.querySelector('.actions'));
+    }
+  }
+};
+
 const initPage = () => {
+  ensureMobileChrome();
   renderRails();
   renderGridIfAny();
   setCart(state.cart);
@@ -257,6 +307,7 @@ const initPage = () => {
 };
 
 const initCategory = (category) => {
+  ensureMobileChrome();
   const grid = document.getElementById('product-grid');
   if (!grid) return;
   const list = catalog.filter((p) => p.category === category);

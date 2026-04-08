@@ -35,30 +35,13 @@
           <input id="search-input" type="search" placeholder="Search products">
         </div>
         <button class="icon-btn" id="login-user" aria-label="User login"><i class="fas fa-user"></i></button>
-        <button class="icon-btn" id="login-admin" aria-label="Admin portal"><i class="fas fa-key"></i></button>
+        <a class="icon-btn" id="login-admin" aria-label="Admin portal" href="admin.html"><i class="fas fa-key"></i></a>
         <div style="position: relative;">
           <button class="icon-btn" id="cart-btn" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="cart-dot" id="cart-count">0</span></button>
         </div>
       </div>
     </div>
   </header>
-
-  <aside class="mobile-drawer" id="mobile-drawer">
-    <header>
-      <div class="close-row">
-        <span class="brand" style="font-size:1.1rem;">MASAYA</span>
-        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
-      </div>
-    </header>
-    <a href="index.html">Home</a>
-    <a href="rings.html">Rings</a>
-    <a href="necklaces.html">Necklaces</a>
-    <a href="earrings.html">Earrings</a>
-    <a href="bracelets.html">Bracelets</a>
-    <a href="accessories.html">Accessories</a>
-    <a href="product.html">Any product</a>
-  </aside>
-  <div class="drawer-overlay" id="mobile-overlay"></div>
 
   <section class="hero">
     <div class="hero-content">
@@ -151,31 +134,22 @@
     <div class="drawer-body"></div>
   </div>
 
-  <div class="modal" id="admin-modal">
-    <div class="modal-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <h3>Admin portal</h3>
-        <button class="icon-btn" id="admin-close" aria-label="Close admin"><i class="fas fa-times"></i></button>
+  <aside class="mobile-drawer" id="mobile-drawer">
+    <header>
+      <div class="close-row">
+        <span class="brand" style="font-size:1.1rem;">MASAYA</span>
+        <button class="icon-btn" id="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
       </div>
-      <form id="admin-form">
-        <input type="password" name="secret" placeholder="Secret key" required>
-        <input type="text" name="name" placeholder="Product name" required>
-        <select name="category" required>
-          <option value="rings">Rings</option>
-          <option value="necklaces">Necklaces</option>
-          <option value="earrings">Earrings</option>
-          <option value="bracelets">Bracelets</option>
-          <option value="accessories">Accessories</option>
-        </select>
-        <input type="number" name="price" placeholder="Price (INR)" required>
-        <input type="url" name="img" placeholder="Primary image URL" required>
-        <input type="url" name="img2" placeholder="Secondary image URL (optional)">
-        <input type="text" name="badge" placeholder="Badge e.g. New, Limited">
-        <button class="btn primary" type="submit">Save & Publish</button>
-      </form>
-    </div>
-  </div>
-
+    </header>
+    <a href="index.html">Home</a>
+    <a href="rings.html">Rings</a>
+    <a href="necklaces.html">Necklaces</a>
+    <a href="earrings.html">Earrings</a>
+    <a href="bracelets.html">Bracelets</a>
+    <a href="accessories.html">Accessories</a>
+    <a href="product.html">Any product</a>
+  </aside>
+  <div class="drawer-overlay" id="mobile-overlay"></div>
   <script src="js/catalog.js"></script>
   <script src="js/store.js"></script>
 </body>
