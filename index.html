@@ -21,6 +21,7 @@
     <div class="nav">
       <div class="brand">MASAYA</div>
       <div class="nav-links">
+        <a href="index.html">Home</a>
         <a href="rings.html">Rings</a>
         <a href="necklaces.html">Necklaces</a>
         <a href="earrings.html">Earrings</a>
@@ -29,8 +30,12 @@
       </div>
       <button class="mobile-nav-btn" id="mobile-open" aria-label="Open menu"><i class="fas fa-bars"></i></button>
       <div class="actions">
-        <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
-        <button class="icon-btn" aria-label="Account"><i class="fas fa-user"></i></button>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input id="search-input" type="search" placeholder="Search products">
+        </div>
+        <button class="icon-btn" id="login-user" aria-label="User login"><i class="fas fa-user"></i></button>
+        <button class="icon-btn" id="login-admin" aria-label="Admin portal"><i class="fas fa-key"></i></button>
         <div style="position: relative;">
           <button class="icon-btn" id="cart-btn" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="cart-dot" id="cart-count">0</span></button>
         </div>
@@ -68,11 +73,9 @@
   </section>
 
   <div class="container section-pad">
-    <div class="bar">
-      <div>
-        <h2 style="margin-bottom:8px;">Shop by category</h2>
-        <p style="color:var(--emerald-700);">Dedicated pages for faster browsing — Flipkart-style speed with a MASAYA finish.</p>
-      </div>
+    <div class="section-head">
+      <h2>Shop by category</h2>
+      <a class="btn ghost" href="#rails">Jump to rails</a>
     </div>
     <div class="category-cards">
       <a class="cat-card" href="rings.html"><div class="cat-icon"><i class="fas fa-gem"></i></div><div><strong>Rings</strong><div class="sub">Solitaire, halo, signature arcs</div></div></a>
@@ -83,15 +86,37 @@
     </div>
   </div>
 
-  <div class="container section-pad" id="catalog">
-    <div class="bar">
-      <div>
-        <h2 style="margin-bottom:6px;">Featured picks</h2>
-        <p style="color:var(--emerald-700);">Fast-loading grid with add-to-bag and INR pricing.</p>
-      </div>
-      <a class="btn ghost" href="rings.html">See all products</a>
+  <div class="container section-pad" id="rails">
+    <div class="section-head"><h2>Rings</h2><a class="btn ghost" href="rings.html">See all</a></div>
+    <div class="rail" data-rail="rings">
+      <button class="rail-arrow left" data-arrow="left"><i class="fas fa-chevron-left"></i></button>
+      <div class="rail-inner"></div>
+      <button class="rail-arrow right" data-arrow="right"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="grid" id="product-grid"></div>
+    <div class="section-head" style="margin-top:24px;"><h2>Necklaces</h2><a class="btn ghost" href="necklaces.html">See all</a></div>
+    <div class="rail" data-rail="necklaces">
+      <button class="rail-arrow left" data-arrow="left"><i class="fas fa-chevron-left"></i></button>
+      <div class="rail-inner"></div>
+      <button class="rail-arrow right" data-arrow="right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="section-head" style="margin-top:24px;"><h2>Earrings</h2><a class="btn ghost" href="earrings.html">See all</a></div>
+    <div class="rail" data-rail="earrings">
+      <button class="rail-arrow left" data-arrow="left"><i class="fas fa-chevron-left"></i></button>
+      <div class="rail-inner"></div>
+      <button class="rail-arrow right" data-arrow="right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="section-head" style="margin-top:24px;"><h2>Bracelets</h2><a class="btn ghost" href="bracelets.html">See all</a></div>
+    <div class="rail" data-rail="bracelets">
+      <button class="rail-arrow left" data-arrow="left"><i class="fas fa-chevron-left"></i></button>
+      <div class="rail-inner"></div>
+      <button class="rail-arrow right" data-arrow="right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="section-head" style="margin-top:24px;"><h2>Accessories</h2><a class="btn ghost" href="accessories.html">See all</a></div>
+    <div class="rail" data-rail="accessories">
+      <button class="rail-arrow left" data-arrow="left"><i class="fas fa-chevron-left"></i></button>
+      <div class="rail-inner"></div>
+      <button class="rail-arrow right" data-arrow="right"><i class="fas fa-chevron-right"></i></button>
+    </div>
   </div>
 
   <footer>
@@ -123,21 +148,35 @@
       <strong>Your bag</strong>
       <button class="icon-btn" id="drawer-close" aria-label="Close"><i class="fas fa-times"></i></button>
     </div>
-    <div class="drawer-body">
-      <p style="color:var(--emerald-700);">Cart preview coming soon.</p>
+    <div class="drawer-body"></div>
+  </div>
+
+  <div class="modal" id="admin-modal">
+    <div class="modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <h3>Admin portal</h3>
+        <button class="icon-btn" id="admin-close" aria-label="Close admin"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="admin-form">
+        <input type="password" name="secret" placeholder="Secret key" required>
+        <input type="text" name="name" placeholder="Product name" required>
+        <select name="category" required>
+          <option value="rings">Rings</option>
+          <option value="necklaces">Necklaces</option>
+          <option value="earrings">Earrings</option>
+          <option value="bracelets">Bracelets</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <input type="number" name="price" placeholder="Price (INR)" required>
+        <input type="url" name="img" placeholder="Primary image URL" required>
+        <input type="url" name="img2" placeholder="Secondary image URL (optional)">
+        <input type="text" name="badge" placeholder="Badge e.g. New, Limited">
+        <button class="btn primary" type="submit">Save & Publish</button>
+      </form>
     </div>
   </div>
 
   <script src="js/catalog.js"></script>
   <script src="js/store.js"></script>
-  <script>
-    // Limit featured to first 12 items
-    const originalCatalog = [...catalog];
-    const featured = originalCatalog.slice(0,12);
-    window.catalog = featured;
-    Store.init('all');
-    // restore full catalog for other pages
-    window.catalog = originalCatalog;
-  </script>
 </body>
 </html>
