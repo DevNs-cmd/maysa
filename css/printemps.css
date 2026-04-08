@@ -1,13 +1,13 @@
 :root {
   --bg: #f7f5fb;
   --panel: rgba(255, 255, 255, 0.45);
-  --purple-900: #2f1d46;
-  --purple-700: #4c2f6c;
-  --purple-500: #6f4ba1;
-  --purple-300: #b09fe0;
-  --purple-100: #f1ecff;
-  --text: #261b32;
-  --muted: #6a5c7d;
+  --purple-900: #7D835A;
+  --purple-700: #696e4c;
+  --purple-500: #B7B180;
+  --purple-300: #e4e1c7;
+  --purple-100: #fcfbf6;
+  --text: #262b1b;
+  --muted: #646a5c;
   --border: rgba(255, 255, 255, 0.25);
   --shadow: 0 10px 40px rgba(47, 29, 70, 0.05);
   --blur: blur(30px) saturate(210%);

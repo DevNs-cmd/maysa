@@ -1,11 +1,11 @@
 :root{
-  --emerald-900:#0f2f25;
-  --emerald-800:#154533;
-  --emerald-700:#1c5b42;
-  --emerald-600:#1f6a4b;
-  --emerald-500:#2b7f5b;
-  --emerald-200:#b9e2cc;
-  --sand:#f6f3ec;
+  --emerald-900:#7D835A; /* Sage Green */
+  --emerald-800:#696e4c;
+  --emerald-700:#55593e;
+  --emerald-600:#7D835A;
+  --emerald-500:#B7B180; /* Champagne Gold */
+  --emerald-200:#e4e1c7;
+  --sand:#fcfbf6;
   --card: rgba(255, 255, 255, 0.45);
   --stroke: rgba(255, 255, 255, 0.2);
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);

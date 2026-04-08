@@ -3,10 +3,10 @@
 :root {
   /* Color Palette - Masaya Ultra-Premium */
   --color-cream:        #F8F5F0;   /* Warm Paper White */
-  --color-emerald-dark: #2C3A2D;   /* Deep Forest Branding */
-  --color-emerald-mid:  #3D5C3F;   /* Interactive Green */
-  --color-gold:         #C9A84C;   /* Authentic Gold Foil */
-  --color-gold-light:   #E8D5A0;   /* Champagne Accent */
+  --color-emerald-dark: #7D835A;   /* Sage Green */
+  --color-emerald-mid:  #696e4c;
+  --color-gold:         #B7B180;   /* Champagne Gold */
+  --color-gold-light:   #e4e1c7;
   --color-white:        #FFFFFF;
   --color-white-80:     rgba(255, 255, 255, 0.8);
   --color-white-40:     rgba(255, 255, 255, 0.4);
